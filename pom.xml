@@ -7,6 +7,73 @@
     <groupId>in.voidma.classroom</groupId>
     <artifactId>network</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
+    <developers>
+        <developer>
+            <id>ThatTigGuy</id>
+            <name>Miles Silberling-Cook</name>
+            <email>thattigguy@gmail.com</email>
+        </developer>
+        <developer>
+            <id>KingKondak</id>
+            <name>Zane Alvarez</name>
+            <email>zane.alvarez@griffinschool.org</email>
+        </developer>
+        <developer>
+            <id>Sam1920Chanow</id>
+            <name>Sam Chanow</name>
+            <email>sam.chanow@griffinschool.org</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.processing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.8.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <id>client</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>in.voidma.classroom.network.client.Client</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>server</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>in.voidma.classroom.network.server.Sever</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
