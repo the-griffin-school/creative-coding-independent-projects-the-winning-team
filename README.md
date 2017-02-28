@@ -3,4 +3,4 @@ Miles Silberling-Cook /
 Zane Alvarez /
 Sam Chanow /
 
-==Check email for team Slack==
+[Join our Slack!](https://the-winning-team-code.slack.com/signup)
