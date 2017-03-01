@@ -10,7 +10,6 @@
           </option>
           <option name="goals">
             <list>
-              <option value="mvn" />
               <option value="package" />
               <option value="exec:java@server" />
             </list>
