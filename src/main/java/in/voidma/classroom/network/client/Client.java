@@ -1,13 +1,11 @@
 package in.voidma.classroom.network.client;
 
-import in.voidma.classroom.network.core.Network;
 import processing.core.PApplet;
 
 public class Client extends PApplet {
 
-    @Override
-    public void setup() {
-        super.setup();
+    public static void main(String[] args) {
+        PApplet.main(Client.class, args);
     }
 
     @Override
@@ -15,17 +13,11 @@ public class Client extends PApplet {
         size(800, 800);
     }
 
+    @Override
+    public void setup() {
+    }
 
     @Override
     public void draw() {
-        super.draw();
-
-        ellipse(50, 50, 50, 50);
-    }
-
-    public static void main(String[] args) {
-        PApplet.main(Client.class, args);
-
-
     }
 }
