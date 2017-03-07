@@ -5,8 +5,6 @@ import io.netty.channel.EventLoopGroup;
 
 public class Server {
 
-    //test
-
     private int port;
 
     private EventLoopGroup bossGroup;
