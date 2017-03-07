@@ -15,9 +15,14 @@ public class Client extends PApplet {
 
     @Override
     public void setup() {
+        background(0);
     }
 
     @Override
     public void draw() {
+        //background(0);
+        fill(255);
+        noStroke();
+        ellipse(mouseX, mouseY, 40, 40);
     }
 }
