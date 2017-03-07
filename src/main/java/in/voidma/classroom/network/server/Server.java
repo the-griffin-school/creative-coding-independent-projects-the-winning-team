@@ -1,23 +1,24 @@
 package in.voidma.classroom.network.server;
 
-import processing.core.PApplet;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.EventLoopGroup;
 
-public class Server extends PApplet {
+public class Server {
+
+    private int port;
+
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
+    private ChannelFuture channel;
+
+    public Server(int port) {
+        this.port = port;
+    }
 
     public static void main (String[] args) {
-        PApplet.main(Server.class, args);
+
     }
 
-    @Override
-    public void settings() {
-        size(800, 800);
-    }
-
-    @Override
-    public void setup() {
-    }
-
-    @Override
-    public void draw() {
+    void run() {
     }
 }
