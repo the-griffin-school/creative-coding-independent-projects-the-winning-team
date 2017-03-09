@@ -9,6 +9,9 @@ import io.netty.buffer.ByteBufAllocator;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.Channel;
+
+import java.util.List;
+
 /**
  * Created by schan on 3/7/2017.
  */
@@ -18,8 +21,8 @@ public abstract class EnvelopeEncoder extends MessageToMessageEncoder implements
             throws IllegalArgumentException {
         // verify that no fields are set to null
 
-        // version(1b) + type(1b) + payload length(4b) + payload(nb)
-        int size = 2 + message.getPayload().length;
+        //type(1b) + payload length(4b) + payload(nb)
+        int size = Integer.BYTES + Byte.BYTES + message.getPayload().length;
 
         ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(size);
         buffer.writeByte(message.getType());
@@ -30,11 +33,16 @@ public abstract class EnvelopeEncoder extends MessageToMessageEncoder implements
     }
 
     @Override
+    protected void encode(ChannelHandlerContext channelHandlerContext, Object o, List list) throws Exception {
+
+    }
+
+/*    @Override
     protected abstract void encode(ChannelHandlerContext channelHandlerContext, Channel channel, Object msg) throws Exception {
         if (msg instanceof Envelope) {
             return encodeMessage((Envelope)msg);
         } else {
             return msg;
         }
-    }
+    }*/
 }
