@@ -15,10 +15,10 @@ import java.util.List;
 /**
  * Created by schan on 3/7/2017.
  */
-public abstract class EnvelopeEncoder extends MessageToMessageEncoder implements ByteBufAllocator {
-    // ...
-    public static ByteBuf encodeMessage(Envelope message)
-            throws IllegalArgumentException {
+public abstract class EnvelopeEncoder extends MessageToMessageEncoder<Envelope> implements ByteBufAllocator {
+
+    @Override
+    protected void encode(ChannelHandlerContext channelHandlerContext, Envelope message, List out) throws Exception {
         // verify that no fields are set to null
 
         //type(1b) + payload length(4b) + payload(nb)
@@ -29,20 +29,6 @@ public abstract class EnvelopeEncoder extends MessageToMessageEncoder implements
         buffer.writeInt(message.getPayload().length);
         buffer.writeBytes(message.getPayload());
 
-        return buffer;
+        out.add(buffer);
     }
-
-    @Override
-    protected void encode(ChannelHandlerContext channelHandlerContext, Object o, List list) throws Exception {
-
-    }
-
-/*    @Override
-    protected abstract void encode(ChannelHandlerContext channelHandlerContext, Channel channel, Object msg) throws Exception {
-        if (msg instanceof Envelope) {
-            return encodeMessage((Envelope)msg);
-        } else {
-            return msg;
-        }
-    }*/
 }
