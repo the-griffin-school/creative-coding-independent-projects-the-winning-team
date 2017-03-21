@@ -1,21 +1,16 @@
 package in.voidma.classroom.network.core.protocol;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.handler.codec.MessageToMessageEncoder;
-
-import in.voidma.classroom.network.core.protocol.Envelope;
-
 import io.netty.buffer.ByteBufAllocator;
-
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.Channel;
+import io.netty.handler.codec.MessageToMessageEncoder;
 
 import java.util.List;
 
 /**
  * Created by schan on 3/7/2017.
  */
-public abstract class EnvelopeEncoder extends MessageToMessageEncoder<Envelope> implements ByteBufAllocator {
+public class EnvelopeEncoder extends MessageToMessageEncoder<Envelope> {
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Envelope message, List out) throws Exception {
