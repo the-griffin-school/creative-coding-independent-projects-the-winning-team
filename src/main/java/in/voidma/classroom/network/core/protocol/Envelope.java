@@ -1,30 +1,25 @@
 package in.voidma.classroom.network.core.protocol;
 
-public class Envelope {
+class Envelope {
     private byte type;
     private byte[] payload;
 
-    public Envelope() {
+    Envelope() {
     }
 
-    public Envelope(byte type, byte[] payload) {
-        this.type = type;
-        this.payload = payload;
-    }
-
-    public byte getType() {
+    byte getType() {
         return type;
     }
 
-    public void setType(byte type) {
+    void setType(byte type) {
         this.type = type;
     }
 
-    public byte[] getPayload() {
+    byte[] getPayload() {
         return payload;
     }
 
-    public void setPayload(byte[] payload) {
+    void setPayload(byte[] payload) {
         this.payload = payload;
     }
 }
