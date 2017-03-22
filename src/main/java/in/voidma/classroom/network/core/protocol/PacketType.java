@@ -1,10 +1,15 @@
 package in.voidma.classroom.network.core.protocol;
 
-import in.voidma.classroom.network.core.protocol.exception.PacketNotFoundException;
-import in.voidma.classroom.network.core.protocol.packet.PlayerUpdatePacket;
+import in.voidma.classroom.network.core.protocol.packet.*;
 
 public enum PacketType {
-    PLAYER_UPDATE_PACKET(PlayerUpdatePacket.class);
+    PLAYER_SPAWN(PlayerSpawnPacket.class),
+    FOOD_SPAWN(FoodSpawnPacket.class),
+    CELL_SPAWN(CellSpawnPacket.class),
+    ENTITY_DESPAWN(EntityDespawnPacket.class),
+    PLAYER_UPDATE_COLOR(PlayerUpdateColorPacket.class),
+    PLAYER_UPDATE_NAME(PlayerUpdateNamePacket.class),
+    CELL_UPDATE_MASS(CellUpdateMassPacket.class);
 
     private Class<? extends Packet> packet;
 
@@ -16,13 +21,8 @@ public enum PacketType {
         return PacketType.values()[value];
     }
 
-    public static PacketType getType(Packet packet) throws PacketNotFoundException {
-        for (PacketType type : PacketType.values()) {
-            if (type.getPacket().equals(packet.getClass())) {
-                return type;
-            }
-        }
-        throw new PacketNotFoundException(packet);
+    public static Class<? extends Packet> getPacket(byte value) {
+        return getType(value).getPacket();
     }
 
     public Class<? extends Packet> getPacket() {

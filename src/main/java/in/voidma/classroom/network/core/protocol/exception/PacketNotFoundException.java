@@ -1,17 +1,17 @@
 package in.voidma.classroom.network.core.protocol.exception;
 
-import in.voidma.classroom.network.core.protocol.Packet;
+import in.voidma.classroom.network.core.protocol.packet.Packet;
 
 public class PacketNotFoundException extends Exception {
 
-    private Packet p;
+    private Class<? extends Packet> p;
 
-    public PacketNotFoundException(Packet p) {
-        super(p.getClass().getSimpleName() + " is not a valid packet");
+    public PacketNotFoundException(Class<? extends Packet> p) {
+        super(p.getSimpleName() + " is not a valid packet class");
         this.p = p;
     }
 
-    public Packet getPacket() {
+    public Class<? extends Packet> getPacket() {
         return p;
     }
 }
