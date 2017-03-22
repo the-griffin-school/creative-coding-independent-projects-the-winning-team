@@ -1,5 +1,8 @@
 package in.voidma.classroom.network.core.protocol;
 
+import in.voidma.classroom.network.core.protocol.packet.Packet;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageCodec;
 
@@ -9,20 +12,25 @@ public class PacketCodec extends MessageToMessageCodec<Envelope, Packet> {
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Packet packet, List<Object> out) throws Exception {
-        byte type = PacketType.getType(packet).getID();
-        byte[] payload = packet.encode();
+        byte id = packet.getID();
+
+        ByteBuf payload = ByteBufAllocator.DEFAULT.buffer();
+        packet.encode(payload);
+
         Envelope envelope = new Envelope();
         envelope.setPayload(payload);
-        envelope.setType(type);
+        envelope.setID(id);
+
         out.add(envelope);
     }
 
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, Envelope envelope, List<Object> out) throws Exception {
-        PacketType packetType = PacketType.getType(envelope.getType());
-        Class<? extends Packet> packetClass = packetType.getPacket();
+        Class<? extends Packet> packetClass = PacketType.getPacket(envelope.getID());
+
         Packet packet = packetClass.newInstance();
         packet.decode(envelope.getPayload());
+
         out.add(packet);
     }
 }
