@@ -1,6 +1,6 @@
 package in.voidma.classroom.network.server.network;
 
-import in.voidma.classroom.network.core.protocol.EnvelopeCodec;
+import in.voidma.classroom.network.core.protocol.EnvelopeDecoder;
 import in.voidma.classroom.network.core.protocol.PacketCodec;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -15,7 +15,7 @@ public class ServerChannelInitializer extends ChannelInitializer {
     @Override
     protected void initChannel(Channel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addLast(group, "envelopeCodec", new EnvelopeCodec());
+        pipeline.addLast(group, "EnvelopeDecoder", new EnvelopeDecoder());
         pipeline.addLast(group, "packetCodec", new PacketCodec());
         pipeline.addLast(group, "serverHandler", new ServerHandler());
     }
