@@ -1,30 +1,27 @@
 package in.voidma.classroom.network.core.protocol;
 
-public class Envelope {
-    private byte type;
-    private byte[] payload;
+import io.netty.buffer.ByteBuf;
 
-    public Envelope() {
+class Envelope {
+    private byte id;
+    private ByteBuf payload;
+
+    Envelope() {
     }
 
-    public Envelope(byte type, byte[] payload) {
-        this.type = type;
-        this.payload = payload;
+    byte getID() {
+        return id;
     }
 
-    public byte getType() {
-        return type;
+    void setID(byte type) {
+        this.id = type;
     }
 
-    public void setType(byte type) {
-        this.type = type;
-    }
-
-    public byte[] getPayload() {
+    ByteBuf getPayload() {
         return payload;
     }
 
-    public void setPayload(byte[] payload) {
+    void setPayload(ByteBuf payload) {
         this.payload = payload;
     }
 }
