@@ -26,6 +26,6 @@ Cell cell;
         //background(0);
         fill(255);
         noStroke();
-        cell = new Cell(mouseX, mouseY, 40, 40);
+
     }
 }
