@@ -14,7 +14,8 @@ public class Client extends PApplet {
         size(800, 800);
     }
 
-Cell cell;
+    Cell cell;
+    PApplet p = new PApplet();
 
     @Override
     public void setup() {
@@ -26,6 +27,7 @@ Cell cell;
         //background(0);
         fill(255);
         noStroke();
-        cell = new Cell(mouseX, mouseY, 40, 40);
+        cell = new Cell(p, mouseX, mouseY, 40, 40);
+        cell.display();
     }
 }
