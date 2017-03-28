@@ -6,6 +6,12 @@ public class Cell {
 
     PApplet p;
     float x, y, w, h;
+
+    public void move(){
+        x = p.mouseX;
+        y = p.mouseY;
+
+    }
     public Cell (PApplet client, float x, float y, float w, float h) {
         this.p = client;
             this.x = x;
@@ -14,6 +20,7 @@ public class Cell {
             this.w = w;
     }
     public void display() {
+        p.fill(255);
         p.ellipse(x, y, w, h);
     }
 
