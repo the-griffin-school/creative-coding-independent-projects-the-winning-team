@@ -5,7 +5,7 @@ import in.voidma.classroom.network.core.gameplay.entity.PCell;
 
 import java.util.ArrayList;
 
-public class Player extends Entity {
+public class PPlayer extends Entity {
 
     private String name;
     private ArrayList<PCell> cells;
