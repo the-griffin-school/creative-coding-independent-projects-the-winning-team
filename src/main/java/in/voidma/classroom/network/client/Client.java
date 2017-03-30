@@ -1,9 +1,11 @@
 package in.voidma.classroom.network.client;
 
-import in.voidma.classroom.network.core.gameplay.Cell;
 import processing.core.PApplet;
 
 public class Client extends PApplet {
+
+    Cell cell;
+    PApplet p = new PApplet();
 
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
@@ -13,9 +15,6 @@ public class Client extends PApplet {
     public void settings() {
         size(800, 800);
     }
-
-    Cell cell;
-    PApplet p = new PApplet();
 
     @Override
     public void setup() {
