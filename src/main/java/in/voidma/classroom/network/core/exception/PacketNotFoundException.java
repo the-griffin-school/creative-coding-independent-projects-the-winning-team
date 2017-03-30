@@ -1,4 +1,4 @@
-package in.voidma.classroom.network.core.protocol.exception;
+package in.voidma.classroom.network.core.exception;
 
 import in.voidma.classroom.network.core.protocol.packet.Packet;
 

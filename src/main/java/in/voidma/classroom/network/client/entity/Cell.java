@@ -2,10 +2,10 @@ package in.voidma.classroom.network.client.entity;
 
 import in.voidma.classroom.network.core.gameplay.Location;
 import in.voidma.classroom.network.core.gameplay.Velocity;
-import in.voidma.classroom.network.core.gameplay.entity.PCell;
+import in.voidma.classroom.network.core.gameplay.entity.ICell;
 import processing.core.PApplet;
 
-public class Cell extends PCell {
+public class Cell extends ICell {
 
     protected PApplet p;
 
