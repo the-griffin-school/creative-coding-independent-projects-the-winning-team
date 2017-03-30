@@ -21,6 +21,7 @@ public class Client extends PApplet {
     public void setup() {
         p.background(0);
         cell = new Cell(p, mouseX, mouseY, 40, 40);
+
     }
 
     @Override
