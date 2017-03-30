@@ -5,19 +5,12 @@ import java.util.UUID;
 
 public class IPlayer extends Entity {
 
-    public IPlayer(UUID uuid, String name, ArrayList<ICell> cells) {
-        super(UUID.randomUUID());
-        this.name = name;
-        this.cells = cells;
-    }
-
     private String name;
+    private ArrayList<ICell> cells;
 
-    public IPlayer(UUID uuid, String name, ArrayList<ICell> cells) {
+    public IPlayer(String name, ArrayList<ICell> cells) {
         super(UUID.randomUUID());
         this.name = name;
         this.cells = cells;
     }
-
-    private ArrayList<ICell> cells;
 }
