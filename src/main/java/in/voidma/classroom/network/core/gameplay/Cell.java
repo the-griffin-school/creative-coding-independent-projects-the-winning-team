@@ -2,7 +2,7 @@ package in.voidma.classroom.network.core.gameplay;
 
 import processing.core.PApplet;
 
-public class Cell {
+public class Cell extends Entity{
 
     PApplet p;
     float x, y, w, h;

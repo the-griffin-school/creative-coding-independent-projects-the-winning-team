@@ -2,7 +2,7 @@ package in.voidma.classroom.network.core.protocol;
 
 import io.netty.buffer.ByteBuf;
 
-class Envelope {
+public class Envelope {
     private byte id;
     private ByteBuf payload;
 

@@ -4,11 +4,13 @@ import in.voidma.classroom.network.core.protocol.packet.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
 import io.netty.handler.codec.MessageToMessageCodec;
 
 import java.util.List;
 
-public class PacketCodec extends MessageToMessageCodec<Envelope, Packet> {
+public class PacketCodec extends MessageToMessageCodec<Envelope, Packet> implements ChannelOutboundHandler, ChannelInboundHandler{
 
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Packet packet, List<Object> out) throws Exception {

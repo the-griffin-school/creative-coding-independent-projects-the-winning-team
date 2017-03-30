@@ -1,4 +1,4 @@
-package in.voidma.classroom.network.client;
+package in.voidma.classroom.network.client.Network;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

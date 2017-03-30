@@ -3,6 +3,7 @@ package in.voidma.classroom.network.core.protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
 import io.netty.handler.codec.ReplayingDecoder;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  * @author schan
  * @author miles
  */
-public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingState>{
+public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingState> implements ChannelInboundHandler{
 
     private Envelope message;
     private int length;
