@@ -1,4 +1,4 @@
-package in.voidma.classroom.network.client.Network;
+package in.voidma.classroom.network.client.network;
 
 import io.netty.channel.*;
 
@@ -21,7 +21,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter implements Chann
 
     @Override
     public void bind(ChannelHandlerContext channelHandlerContext, SocketAddress socketAddress, ChannelPromise channelPromise) throws Exception {
-        
+
     }
 
     @Override

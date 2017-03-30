@@ -1,5 +1,6 @@
 package in.voidma.classroom.network.client;
 
+import in.voidma.classroom.network.client.entity.Cell;
 import processing.core.PApplet;
 
 public class Client extends PApplet {

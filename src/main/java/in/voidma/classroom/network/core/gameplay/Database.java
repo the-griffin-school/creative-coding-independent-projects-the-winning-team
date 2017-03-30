@@ -1,5 +1,7 @@
 package in.voidma.classroom.network.core.gameplay;
 
+import in.voidma.classroom.network.core.gameplay.entity.Entity;
+
 import java.util.HashMap;
 import java.util.UUID;
 

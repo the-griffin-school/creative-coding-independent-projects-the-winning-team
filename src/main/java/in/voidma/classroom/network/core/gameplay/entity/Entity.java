@@ -1,4 +1,4 @@
-package in.voidma.classroom.network.core.gameplay;
+package in.voidma.classroom.network.core.gameplay.entity;
 
 import java.util.UUID;
 

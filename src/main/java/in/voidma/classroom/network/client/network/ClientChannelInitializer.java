@@ -1,9 +1,8 @@
-package in.voidma.classroom.network.client.Network;
+package in.voidma.classroom.network.client.network;
 
 import in.voidma.classroom.network.core.protocol.EnvelopeDecoder;
 import in.voidma.classroom.network.core.protocol.EnvelopeEncoder;
 import in.voidma.classroom.network.core.protocol.PacketCodec;
-import in.voidma.classroom.network.server.network.ServerHandler;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
