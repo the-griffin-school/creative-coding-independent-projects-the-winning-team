@@ -5,23 +5,20 @@ import processing.core.PApplet;
 public class Cell extends Entity{
 
     PApplet p;
-    float x, y, w, h;
+    Location loc;
+    Velocity voc;
 
-    public void move(){
-        x = p.mouseX;
-        y = p.mouseY;
+    public void move(Location loc, Velocity voc) {
 
     }
-    public Cell (PApplet client, float x, float y, float w, float h) {
+    public Cell (PApplet client, Location loc, Velocity vel) {
         this.p = client;
-            this.x = x;
-            this.y = y;
-            this.h = h;
-            this.w = w;
+        this.loc = loc;
+        this.voc = vel;
     }
     public void display() {
         p.fill(255);
-        p.ellipse(x, y, w, h);
+        p.ellipse(loc.x, loc.y, 40, 40);
     }
 
 }

@@ -6,13 +6,14 @@ package in.voidma.classroom.network.server.network;
 
 import io.netty.buffer.ByteBuf;
 
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.*;
+
+import java.net.SocketAddress;
 
 /**
  * Handles a server-side channel.
  */
-public class ServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class ServerHandler extends ChannelInboundHandlerAdapter implements ChannelInboundHandler, ChannelOutboundHandler{ // (1)
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
@@ -25,5 +26,45 @@ public class ServerHandler extends ChannelInboundHandlerAdapter { // (1)
         // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();
+    }
+
+    @Override
+    public void bind(ChannelHandlerContext channelHandlerContext, SocketAddress socketAddress, ChannelPromise channelPromise) throws Exception {
+
+    }
+
+    @Override
+    public void connect(ChannelHandlerContext channelHandlerContext, SocketAddress socketAddress, SocketAddress socketAddress1, ChannelPromise channelPromise) throws Exception {
+
+    }
+
+    @Override
+    public void disconnect(ChannelHandlerContext channelHandlerContext, ChannelPromise channelPromise) throws Exception {
+
+    }
+
+    @Override
+    public void close(ChannelHandlerContext channelHandlerContext, ChannelPromise channelPromise) throws Exception {
+
+    }
+
+    @Override
+    public void deregister(ChannelHandlerContext channelHandlerContext, ChannelPromise channelPromise) throws Exception {
+
+    }
+
+    @Override
+    public void read(ChannelHandlerContext channelHandlerContext) throws Exception {
+
+    }
+
+    @Override
+    public void write(ChannelHandlerContext channelHandlerContext, Object o, ChannelPromise channelPromise) throws Exception {
+
+    }
+
+    @Override
+    public void flush(ChannelHandlerContext channelHandlerContext) throws Exception {
+
     }
 }
