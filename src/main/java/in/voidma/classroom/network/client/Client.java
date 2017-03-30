@@ -19,15 +19,17 @@ public class Client extends PApplet {
 
     @Override
     public void setup() {
-        background(0);
+        p.background(0);
+        cell = new Cell(p, mouseX, mouseY, 40, 40);
     }
 
     @Override
     public void draw() {
         //background(0);
-        fill(255);
-        noStroke();
-        cell = new Cell(p, mouseX, mouseY, 40, 40);
+        p.fill(255);
+        p.ellipse(height/2, width/2,50,50);
+        p.noStroke();
         cell.display();
+        cell.move();
     }
 }
