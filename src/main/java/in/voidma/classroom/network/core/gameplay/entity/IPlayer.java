@@ -37,4 +37,20 @@ public class IPlayer extends Entity {
         this.name = name;
         this.cells = cells;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<ICell> getCells() {
+        return cells;
+    }
+
+    public void setCells(ArrayList<ICell> cells) {
+        this.cells = cells;
+    }
 }

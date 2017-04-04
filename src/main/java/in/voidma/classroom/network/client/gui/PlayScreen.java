@@ -2,11 +2,14 @@ package in.voidma.classroom.network.client.gui;
 
 import in.voidma.classroom.network.client.Client;
 import in.voidma.classroom.network.client.entity.Drawable;
+import in.voidma.classroom.network.client.entity.Player;
 
 /**
  * Created by Zane on 4/4/2017.
  */
 public class PlayScreen extends Screen {
+
+    Player ourPlayer;
 
     public PlayScreen(Client client) {
         super(client);
