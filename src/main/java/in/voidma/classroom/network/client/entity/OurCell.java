@@ -26,9 +26,9 @@ import processing.core.PApplet;
  * @author Zane
  * @author Sam
  */
-public class PlayerCell extends Cell {
+public class OurCell extends Cell {
 
-    public PlayerCell(Location loc, Velocity vel, PApplet p) {
+    public OurCell(Location loc, Velocity vel, PApplet p) {
         super(loc, vel, p);
     }
 

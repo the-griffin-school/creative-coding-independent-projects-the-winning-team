@@ -61,4 +61,8 @@ public class Client extends PApplet {
     public void setGui(Screen gui) {
         this.gui = gui;
     }
+
+    public PApplet getProsessing() {
+        return p;
+    }
 }
