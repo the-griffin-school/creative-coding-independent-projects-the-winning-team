@@ -1,6 +1,8 @@
 package in.voidma.classroom.network.client;
 
 import in.voidma.classroom.network.client.entity.Cell;
+import in.voidma.classroom.network.core.gameplay.Location;
+import in.voidma.classroom.network.core.gameplay.Velocity;
 import processing.core.PApplet;
 
 public class Client extends PApplet {
@@ -20,7 +22,7 @@ public class Client extends PApplet {
     @Override
     public void setup() {
         p.background(0);
-        cell = new Cell(p, mouseX, mouseY, 40, 40);
+        cell = new Cell(new Location(), new Velocity(0, 0), p);
 
     }
 
@@ -31,6 +33,6 @@ public class Client extends PApplet {
         p.ellipse(height/2, width/2,50,50);
         p.noStroke();
         cell.display();
-        cell.move();
+        //cell.move();
     }
 }
