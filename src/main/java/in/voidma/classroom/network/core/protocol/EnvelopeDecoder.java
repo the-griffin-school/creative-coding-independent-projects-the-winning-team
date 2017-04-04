@@ -1,5 +1,19 @@
-package in.voidma.classroom.network.core.protocol;
+//  o8o                                         .        88                           .                              .        o8o
+//  `"'                                       .o8       .8'                         .o8                            .o8        `"'
+// oooo  ooo. .oo.   oo.ooooo.  oooo  oooo  .o888oo    .8'   .ooooo.  oooo  oooo  .o888oo oo.ooooo.  oooo  oooo  .o888oo     oooo   .ooooo.
+// `888  `888P"Y88b   888' `88b `888  `888    888     .8'   d88' `88b `888  `888    888    888' `88b `888  `888    888       `888  d88' `88b
+//  888   888   888   888   888  888   888    888    .8'    888   888  888   888    888    888   888  888   888    888        888  888   888
+//  888   888   888   888   888  888   888    888 . .8'     888   888  888   888    888 .  888   888  888   888    888 . .o.  888  888   888
+// o888o o888o o888o  888bod8P'  `V88V"V8P'   "888" 88      `Y8bod8P'  `V88V"V8P'   "888"  888bod8P'  `V88V"V8P'   "888" Y8P o888o `Y8bod8P'
+//                    888                                                                  888
+//                   o888o                                                                o888o
+//
+// Miles Silberling-Cook
+// Zane Alversomething
+// Samantha Channow
+//
 
+package in.voidma.classroom.network.core.protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -9,9 +23,10 @@ import io.netty.handler.codec.ReplayingDecoder;
 import java.util.List;
 
 /**
- * Created by sam channow on 3/23/2017.
- * @author schan
- * @author miles
+ * Decodes bytebufs from the IO stream into envelope instances that can be handled upstream
+ *
+ * @author Miles
+ * @author Sam
  */
 public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingState> implements ChannelInboundHandler{
 

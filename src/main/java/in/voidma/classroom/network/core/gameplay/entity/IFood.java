@@ -1,3 +1,4 @@
+//
 //  o8o                                         .        88                           .                              .        o8o
 //  `"'                                       .o8       .8'                         .o8                            .o8        `"'
 // oooo  ooo. .oo.   oo.ooooo.  oooo  oooo  .o888oo    .8'   .ooooo.  oooo  oooo  .o888oo oo.ooooo.  oooo  oooo  .o888oo     oooo   .ooooo.
@@ -13,24 +14,18 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.protocol;
+package in.voidma.classroom.network.core.gameplay.entity;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelOutboundHandler;
-import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.UUID;
 
 /**
- * Encodes a envelope instance into a downstream oriented bytebuf
+ * Common food data class
  *
- * @author Miles
  * @author Sam
  */
-public class EnvelopeEncoder extends MessageToByteEncoder<Envelope> implements ChannelOutboundHandler {
-    @Override
-    protected void encode(ChannelHandlerContext channelHandlerContext, Envelope envelope, ByteBuf out) throws Exception {
-        out.writeByte(envelope.getID());
-        out.writeInt(envelope.getPayload().array().length);
-        out.writeBytes(envelope.getPayload());
+public class IFood extends Entity {
+
+    public IFood() {
+        super(UUID.randomUUID());
     }
 }

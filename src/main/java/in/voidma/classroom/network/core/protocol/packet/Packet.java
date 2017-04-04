@@ -1,7 +1,7 @@
 package in.voidma.classroom.network.core.protocol.packet;
 
+import in.voidma.classroom.network.core.exception.PacketNotFoundException;
 import in.voidma.classroom.network.core.protocol.PacketType;
-import in.voidma.classroom.network.core.protocol.exception.PacketNotFoundException;
 import io.netty.buffer.ByteBuf;
 
 public abstract class Packet {

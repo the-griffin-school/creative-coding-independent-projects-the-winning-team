@@ -1,3 +1,4 @@
+//
 //  o8o                                         .        88                           .                              .        o8o
 //  `"'                                       .o8       .8'                         .o8                            .o8        `"'
 // oooo  ooo. .oo.   oo.ooooo.  oooo  oooo  .o888oo    .8'   .ooooo.  oooo  oooo  .o888oo oo.ooooo.  oooo  oooo  .o888oo     oooo   .ooooo.
@@ -13,24 +14,51 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.protocol;
+package in.voidma.classroom.network.core.gameplay.entity;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelOutboundHandler;
-import io.netty.handler.codec.MessageToByteEncoder;
+import in.voidma.classroom.network.core.gameplay.Location;
+import in.voidma.classroom.network.core.gameplay.Velocity;
+
+import java.util.UUID;
 
 /**
- * Encodes a envelope instance into a downstream oriented bytebuf
+ * Common cell data class
  *
  * @author Miles
- * @author Sam
  */
-public class EnvelopeEncoder extends MessageToByteEncoder<Envelope> implements ChannelOutboundHandler {
-    @Override
-    protected void encode(ChannelHandlerContext channelHandlerContext, Envelope envelope, ByteBuf out) throws Exception {
-        out.writeByte(envelope.getID());
-        out.writeInt(envelope.getPayload().array().length);
-        out.writeBytes(envelope.getPayload());
+public class ICell extends Entity {
+
+    protected Location loc;
+    protected Velocity vel;
+    protected int mass;
+
+    public ICell(Location loc, Velocity vel) {
+        super(UUID.randomUUID());
+        this.loc = loc;
+        this.vel = vel;
+    }
+
+    public Location getLocation() {
+        return loc;
+    }
+
+    public void setLocation(Location loc) {
+        this.loc = loc;
+    }
+
+    public Velocity getVelocity() {
+        return vel;
+    }
+
+    public void setVelocity(Velocity vel) {
+        this.vel = vel;
+    }
+
+    public int getMass() {
+        return mass;
+    }
+
+    public void setMass(int mass) {
+        this.mass = mass;
     }
 }
