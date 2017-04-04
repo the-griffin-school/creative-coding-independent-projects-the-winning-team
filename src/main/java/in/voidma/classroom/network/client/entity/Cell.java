@@ -29,7 +29,7 @@ import processing.core.PApplet;
  * @author Zane
  * @author Sam
  */
-public class Cell extends ICell {
+public class Cell extends ICell implements Drawable {
 
     protected PApplet p;
 
@@ -43,4 +43,8 @@ public class Cell extends ICell {
         p.ellipse(loc.getX(), loc.getY(), mass, mass);
     }
 
+    @Override
+    public void draw(PApplet processing) {
+
+    }
 }

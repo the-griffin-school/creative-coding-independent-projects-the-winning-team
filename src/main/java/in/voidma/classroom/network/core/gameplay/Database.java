@@ -21,7 +21,6 @@ import in.voidma.classroom.network.core.gameplay.entity.Entity;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * A singleton keystore async database for storing entities by UUID
@@ -55,14 +54,6 @@ public class Database {
 
     public Collection<Entity> getAll() {
         return entities.values();
-    }
-
-    public Collection<? extends Entity> getAll(Class<? extends Entity> type) {
-        return getAll()
-                .stream()
-                .filter(p -> type.isInstance(p))
-                .map(p -> type.cast(p))
-                .collect(Collectors.toList());
     }
 
     public void add(UUID uuid, Entity entity) {
