@@ -16,11 +16,8 @@
 
 package in.voidma.classroom.network.client;
 
-import in.voidma.classroom.network.client.entity.Cell;
 import in.voidma.classroom.network.client.gui.LoginScreen;
 import in.voidma.classroom.network.client.gui.Screen;
-import in.voidma.classroom.network.core.gameplay.Location;
-import in.voidma.classroom.network.core.gameplay.Velocity;
 import processing.core.PApplet;
 
 
@@ -33,8 +30,8 @@ import processing.core.PApplet;
  */
 public class Client extends PApplet {
 
-    Screen gui;
-    PApplet p = new PApplet();
+    private Screen gui;
+    private PApplet p = new PApplet();
 
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
@@ -52,12 +49,16 @@ public class Client extends PApplet {
         // Graphics Setup
         p.background(0);
 
-        gui = new LoginScreen();
+        gui = new LoginScreen(this);
     }
 
     @Override
     public void draw() {
         gui.update();
         gui.draw();
+    }
+
+    public void setGui(Screen gui) {
+        this.gui = gui;
     }
 }
