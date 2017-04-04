@@ -31,7 +31,6 @@ import processing.core.PApplet;
 public class Client extends PApplet {
 
     private Screen gui;
-    private PApplet p = new PApplet();
 
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
@@ -47,7 +46,6 @@ public class Client extends PApplet {
         // Networking Setup
 
         // Graphics Setup
-        p.background(0);
 
         gui = new LoginScreen(this);
     }
@@ -60,9 +58,5 @@ public class Client extends PApplet {
 
     public void setGui(Screen gui) {
         this.gui = gui;
-    }
-
-    public PApplet getProsessing() {
-        return p;
     }
 }

@@ -7,10 +7,10 @@ import in.voidma.classroom.network.client.Client;
  */
 public abstract class Screen {
 
-    Client client;
+    private Client processing;
 
-    public Screen(Client client) {
-        this.client = client;
+    public Screen(Client processing) {
+        this.processing = processing;
     }
 
     public abstract void update ();
