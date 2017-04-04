@@ -19,5 +19,6 @@ public class LoginScreen extends Screen{
     @Override
     public void draw() {
 
+        processing.background(0,77,153);
     }
 }

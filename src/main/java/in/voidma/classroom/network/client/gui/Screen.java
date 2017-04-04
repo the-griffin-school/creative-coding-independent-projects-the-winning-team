@@ -7,7 +7,7 @@ import in.voidma.classroom.network.client.Client;
  */
 public abstract class Screen {
 
-    private Client processing;
+    protected Client processing;
 
     public Screen(Client processing) {
         this.processing = processing;
