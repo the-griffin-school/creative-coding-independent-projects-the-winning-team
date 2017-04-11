@@ -1,6 +1,7 @@
 package in.voidma.classroom.network.client.gui;
 
 import fisica.FWorld;
+import fisica.Fisica;
 import in.voidma.classroom.network.client.Client;
 import in.voidma.classroom.network.client.entity.Player;
 
@@ -12,9 +13,17 @@ public class PlayScreen extends Screen {
     Player ourPlayer;
     FWorld world;
 
+    public PlayScreen(Client client, FWorld world) {
+        super(client);
+        this.world = world;
+    }
+
+
     public PlayScreen(Client client) {
         super(client);
-        world = client.getWorld();
+
+        Fisica.init(client);
+        this.world = new FWorld();
     }
 
     @Override
