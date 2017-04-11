@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.processing:fisica:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.processing:core:3.2.3" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-all:4.1.8.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.5" level="project" />
