@@ -17,17 +17,12 @@
 package in.voidma.classroom.network.client.entity;
 
 import in.voidma.classroom.network.core.gameplay.entity.IEjection;
-import processing.core.PApplet;
 
 /**
  * The client implementation of the common IEjection class.
  *
  * @author Sam
  */
-public class Ejection extends IEjection implements Drawable {
+public class Ejection extends IEjection {
 
-    @Override
-    public void draw(PApplet processing) {
-
-    }
 }

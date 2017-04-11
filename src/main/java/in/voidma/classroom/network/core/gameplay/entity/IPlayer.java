@@ -29,8 +29,8 @@ import java.util.UUID;
 
 public class IPlayer extends Entity {
 
-    private String name;
-    private ArrayList<ICell> cells;
+    protected String name;
+    protected ArrayList<ICell> cells;
 
     public IPlayer(String name, ArrayList<ICell> cells) {
         super(UUID.randomUUID());

@@ -1,7 +1,7 @@
 package in.voidma.classroom.network.client.gui;
 
+import fisica.FWorld;
 import in.voidma.classroom.network.client.Client;
-import in.voidma.classroom.network.client.entity.Drawable;
 import in.voidma.classroom.network.client.entity.Player;
 
 /**
@@ -10,9 +10,11 @@ import in.voidma.classroom.network.client.entity.Player;
 public class PlayScreen extends Screen {
 
     Player ourPlayer;
+    FWorld world;
 
     public PlayScreen(Client client) {
         super(client);
+        world = client.getWorld();
     }
 
     @Override
@@ -22,8 +24,6 @@ public class PlayScreen extends Screen {
 
     @Override
     public void draw() {
-        database.getAll().stream()
-                .filter(e -> e instanceof Drawable)
-                .forEach(e -> ((Drawable) e).draw(processing));
+
     }
 }

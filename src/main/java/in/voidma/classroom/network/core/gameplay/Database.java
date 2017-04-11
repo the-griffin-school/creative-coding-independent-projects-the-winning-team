@@ -34,7 +34,7 @@ public class Database {
     private ConcurrentHashMap<UUID, Entity> entities;
 
     private Database() {
-        entities = new ConcurrentHashMap<>();
+        entities = new ConcurrentHashMap<UUID, Entity>();
     }
 
     public static Database getInstance() {

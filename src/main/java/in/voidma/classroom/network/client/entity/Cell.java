@@ -20,6 +20,7 @@ import in.voidma.classroom.network.core.gameplay.Location;
 import in.voidma.classroom.network.core.gameplay.Velocity;
 import in.voidma.classroom.network.core.gameplay.entity.ICell;
 import processing.core.PApplet;
+import processing.core.PConstants;
 
 
 /**
@@ -29,22 +30,31 @@ import processing.core.PApplet;
  * @author Zane
  * @author Sam
  */
-public class Cell extends ICell implements Drawable {
+public class Cell extends ICell {
 
-    protected PApplet p;
+    protected final int points = 25;
+    protected Player player;
 
-    public Cell(Location loc, Velocity vel, PApplet p) {
-        super(loc, vel);
-        this.p = p;
+    public Cell(Player player, Location location, Velocity velocity) {
+        super(player, location, velocity);
     }
 
-    public void display() {
-        p.fill(255);
-        p.ellipse(loc.getX(), loc.getY(), mass, mass);
-    }
-
-    @Override
     public void draw(PApplet processing) {
 
+        float angle = PConstants.TWO_PI / (float) 25;
+
+        processing.fill(player.color);
+        processing.stroke(processing.lerpColor(player.color, processing.color(0), .2f));
+
+        processing.beginShape();
+
+        for (int i = 0; i < points; i++) {
+            processing.point(
+                    mass * PApplet.sin(angle * i),
+                    mass * PApplet.cos(angle * i)
+            );
+        }
+
+        processing.endShape(PConstants.CLOSE);
     }
 }

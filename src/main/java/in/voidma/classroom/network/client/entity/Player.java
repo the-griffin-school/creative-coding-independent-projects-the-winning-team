@@ -28,7 +28,18 @@ import java.util.ArrayList;
  */
 public class Player extends IPlayer {
 
-    public Player(String name, ArrayList<ICell> cells) {
+    protected int color;
+
+    public Player(String name, int color, ArrayList<ICell> cells) {
         super(name, cells);
+        this.color = color;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

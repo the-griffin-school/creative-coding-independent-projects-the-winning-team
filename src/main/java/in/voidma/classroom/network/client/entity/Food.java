@@ -17,7 +17,6 @@
 package in.voidma.classroom.network.client.entity;
 
 import in.voidma.classroom.network.core.gameplay.entity.IFood;
-import processing.core.PApplet;
 
 /**
  * The client implementation of the common IFood class.
@@ -25,10 +24,6 @@ import processing.core.PApplet;
  * @author Miles
  * @author Sam
  */
-public class Food extends IFood implements Drawable {
+public class Food extends IFood {
 
-    @Override
-    public void draw(PApplet processing) {
-
-    }
 }

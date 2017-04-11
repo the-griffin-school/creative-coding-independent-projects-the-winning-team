@@ -16,6 +16,8 @@
 
 package in.voidma.classroom.network.client;
 
+import fisica.FWorld;
+import fisica.Fisica;
 import in.voidma.classroom.network.client.gui.LoginScreen;
 import in.voidma.classroom.network.client.gui.Screen;
 import processing.core.PApplet;
@@ -30,15 +32,24 @@ import processing.core.PApplet;
  */
 public class Client extends PApplet {
 
+    private static Client INSTANCE;
+
     private Screen gui;
+    private FWorld world;
 
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
     }
 
+    public static Client getInstance() {
+        return INSTANCE;
+    }
+
     @Override
     public void settings() {
+        Client.INSTANCE = this;
         size(800, 800);
+        smooth();
     }
 
     @Override
@@ -46,6 +57,8 @@ public class Client extends PApplet {
         // Networking Setup
 
         // Graphics Setup
+        Fisica.init(this);
+        world = new FWorld();
 
         gui = new LoginScreen(this);
     }
@@ -58,5 +71,9 @@ public class Client extends PApplet {
 
     public void setGui(Screen gui) {
         this.gui = gui;
+    }
+
+    public FWorld getWorld() {
+        return world;
     }
 }

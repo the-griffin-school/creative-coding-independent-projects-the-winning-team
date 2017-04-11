@@ -28,30 +28,40 @@ import java.util.UUID;
  */
 public class ICell extends Entity {
 
-    protected Location loc;
-    protected Velocity vel;
+    protected IPlayer player;
+    protected Location location;
+    protected Velocity velocity;
     protected int mass;
 
-    public ICell(Location loc, Velocity vel) {
+    public ICell(IPlayer player, Location location, Velocity velocity) {
         super(UUID.randomUUID());
-        this.loc = loc;
-        this.vel = vel;
+        this.player = player;
+        this.location = location;
+        this.velocity = velocity;
+    }
+
+    public IPlayer getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(IPlayer player) {
+        this.player = player;
     }
 
     public Location getLocation() {
-        return loc;
+        return location;
     }
 
-    public void setLocation(Location loc) {
-        this.loc = loc;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public Velocity getVelocity() {
-        return vel;
+        return velocity;
     }
 
-    public void setVelocity(Velocity vel) {
-        this.vel = vel;
+    public void setVelocity(Velocity velocity) {
+        this.velocity = velocity;
     }
 
     public int getMass() {
