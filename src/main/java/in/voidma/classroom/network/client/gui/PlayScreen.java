@@ -50,7 +50,9 @@ public class PlayScreen extends Screen {
         averageLocationY = averageLocationY / ourPlayer.getCells().size();
 
         processing.pushMatrix();
-        
+        processing.translate(-1 * averageLocationX, -1 * averageLocationY);
+        processing.scale(10);
+        processing.scale(-2 * averageMass);
         world.draw(processing);
         processing.popMatrix();
     }
