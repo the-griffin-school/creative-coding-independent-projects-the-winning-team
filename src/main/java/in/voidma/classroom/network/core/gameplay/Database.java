@@ -16,7 +16,7 @@
 
 package in.voidma.classroom.network.core.gameplay;
 
-import in.voidma.classroom.network.core.gameplay.entity.Entity;
+import in.voidma.classroom.network.core.gameplay.newEntity.IEntity;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -31,10 +31,10 @@ public class Database {
 
     private static Database instance;
 
-    private ConcurrentHashMap<UUID, Entity> entities;
+    private ConcurrentHashMap<UUID, IEntity> entities;
 
     private Database() {
-        entities = new ConcurrentHashMap<UUID, Entity>();
+        entities = new ConcurrentHashMap<UUID, IEntity>();
     }
 
     public static Database getInstance() {
@@ -48,15 +48,15 @@ public class Database {
         return instance;
     }
 
-    public Entity get(UUID uuid) {
+    public IEntity get(UUID uuid) {
         return entities.get(uuid);
     }
 
-    public Collection<Entity> getAll() {
+    public Collection<IEntity> getAll() {
         return entities.values();
     }
 
-    public void add(UUID uuid, Entity entity) {
+    public void add(UUID uuid, IEntity entity) {
         entities.put(uuid, entity);
     }
 

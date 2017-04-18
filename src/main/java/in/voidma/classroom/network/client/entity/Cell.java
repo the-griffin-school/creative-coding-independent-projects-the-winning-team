@@ -16,6 +16,7 @@
 
 package in.voidma.classroom.network.client.entity;
 
+import fisica.FBlob;
 import in.voidma.classroom.network.core.gameplay.Location;
 import in.voidma.classroom.network.core.gameplay.Velocity;
 import in.voidma.classroom.network.core.gameplay.entity.ICell;
@@ -32,11 +33,12 @@ import processing.core.PConstants;
  */
 public class Cell extends ICell {
 
-    protected final int points = 25;
     protected Player player;
+    protected FBlob blob;
 
     public Cell(Player player, Location location, Velocity velocity) {
         super(player, location, velocity);
+        blob.setAsCircle(mass);
     }
 
     public void draw(PApplet processing) {

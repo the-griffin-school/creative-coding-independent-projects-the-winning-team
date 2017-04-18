@@ -16,9 +16,6 @@
 
 package in.voidma.classroom.network.core.gameplay.entity;
 
-import in.voidma.classroom.network.core.gameplay.Location;
-import in.voidma.classroom.network.core.gameplay.Velocity;
-
 import java.util.UUID;
 
 /**
@@ -26,18 +23,15 @@ import java.util.UUID;
  *
  * @author Miles
  */
+@Deprecated
 public class ICell extends Entity {
 
     protected IPlayer player;
-    protected Location location;
-    protected Velocity velocity;
     protected int mass;
 
-    public ICell(IPlayer player, Location location, Velocity velocity) {
+    public ICell(IPlayer player) {
         super(UUID.randomUUID());
         this.player = player;
-        this.location = location;
-        this.velocity = velocity;
     }
 
     public IPlayer getPlayer() {
@@ -46,22 +40,6 @@ public class ICell extends Entity {
 
     public void setPlayer(IPlayer player) {
         this.player = player;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Velocity getVelocity() {
-        return velocity;
-    }
-
-    public void setVelocity(Velocity velocity) {
-        this.velocity = velocity;
     }
 
     public int getMass() {
