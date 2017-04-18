@@ -36,25 +36,31 @@ public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingSt
     /**
      * Decodes byte array into envelope object
      */
+    //constructor
     public EnvelopeDecoder() {
         super(DecodingState.TYPE);
         this.message = new Envelope();
     }
 
     @Override
+    //uses the sgtate of the object based on PacketType enum to decode data
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> out) throws Exception {
         switch (state()) {
             case TYPE:
+                //gets ID so we can defien the type of packet
                 message.setID(byteBuf.readByte());
                 checkpoint(DecodingState.PAYLOAD_LENGTH);
             case PAYLOAD_LENGTH:
+                //get the lengthn of the array so we know what we are decoding
                 length = byteBuf.readInt();
                 checkpoint(DecodingState.PAYLOAD);
             case PAYLOAD:
+                //actual data
                 message.setPayload(byteBuf.readBytes(length));
                 out.add(message);
                 break;
             default:
+                //error
                 throw new Exception("Unknown decoding state " + state());
         }
     }

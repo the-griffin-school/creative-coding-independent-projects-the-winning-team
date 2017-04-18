@@ -28,6 +28,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
  */
 public class EnvelopeEncoder extends MessageToByteEncoder<Envelope> implements ChannelOutboundHandler {
     @Override
+    //creates big byte array with all the data
     protected void encode(ChannelHandlerContext channelHandlerContext, Envelope envelope, ByteBuf out) throws Exception {
         out.writeByte(envelope.getID());
         out.writeInt(envelope.getPayload().array().length);

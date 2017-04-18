@@ -24,6 +24,7 @@ import in.voidma.classroom.network.core.protocol.packet.*;
  * @author Miles
  */
 public enum PacketType {
+    //types of classes that packets can be decoded into
     PLAYER_SPAWN(PlayerSpawnPacket.class),
     FOOD_SPAWN(FoodSpawnPacket.class),
     CELL_SPAWN(CellSpawnPacket.class),

@@ -26,10 +26,10 @@ import io.netty.buffer.ByteBuf;
 public class Envelope {
     private byte id;
     private ByteBuf payload;
-
+    //constructor
     Envelope() {
     }
-
+    //base functions to be inherited
     byte getID() {
         return id;
     }
