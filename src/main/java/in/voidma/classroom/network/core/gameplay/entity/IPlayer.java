@@ -27,6 +27,7 @@ import java.util.UUID;
  * @implNote Very different from Cell class.
  */
 
+@Deprecated
 public class IPlayer extends Entity {
 
     protected String name;

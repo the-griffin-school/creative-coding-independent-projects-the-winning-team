@@ -16,6 +16,6 @@ public abstract class Screen {
         database = Database.getInstance();
     }
 
-    public abstract void update ();
+    public abstract void update(int seconds);
     public abstract void draw();
 }

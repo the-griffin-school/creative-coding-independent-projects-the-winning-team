@@ -23,6 +23,7 @@ import java.util.UUID;
  *
  * @author Sam
  */
+@Deprecated
 public class IFood extends Entity {
 
     public IFood() {
