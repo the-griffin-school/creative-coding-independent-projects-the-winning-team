@@ -19,7 +19,7 @@ public class LoginScreen extends Screen{
     }
 
     @Override
-    public void update() {
+    public void update(int seconds) {
 
     }
 

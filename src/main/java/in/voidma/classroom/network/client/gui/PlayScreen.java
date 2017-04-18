@@ -3,7 +3,6 @@ package in.voidma.classroom.network.client.gui;
 import fisica.FWorld;
 import fisica.Fisica;
 import in.voidma.classroom.network.client.Client;
-import in.voidma.classroom.network.client.entity.Cell;
 import in.voidma.classroom.network.client.entity.Player;
 import in.voidma.classroom.network.core.gameplay.entity.ICell;
 
@@ -29,8 +28,8 @@ public class PlayScreen extends Screen {
     }
 
     @Override
-    public void update() {
-        world.step(); //TODO: Update with dynamic time increment
+    public void update(int seconds) {
+        world.step(seconds); //TODO: Update with dynamic time increment
     }
 
     @Override

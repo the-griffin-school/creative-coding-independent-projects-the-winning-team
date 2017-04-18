@@ -24,6 +24,7 @@ import java.util.UUID;
  * @author Miles
  * @author Sam
  */
+@Deprecated
 public class IEjection extends Entity {
 
     public IEjection() {
