@@ -1,27 +1,22 @@
 package in.voidma.classroom.network.client.gui;
 
-import fisica.FWorld;
-import fisica.Fisica;
+import fisica.FCompound;
 import in.voidma.classroom.network.client.Client;
 
 /**
  * Created by Zane on 4/4/2017.
  */
-public class LoginScreen extends Screen{
+public class LoginScreen extends Screen {
 
-    FWorld world;
     String nickname;
 
     public LoginScreen(Client client) {
         super(client);
-
-        Fisica.init(client);
-        this.world = new FWorld();
     }
 
     @Override
     public void update(int seconds) {
-
+        world.step(seconds);
     }
 
     @Override
@@ -35,8 +30,10 @@ public class LoginScreen extends Screen{
 
     @Override
     public void draw() {
-
         processing.background(0,77,153);
+
+        world.draw();
+
         processing.rectMode(processing.CENTER);
         processing.rect(processing.height/2, processing.width/2, 600, 300);
         processing.textAlign(processing.CENTER, processing.BOTTOM);
@@ -48,8 +45,8 @@ public class LoginScreen extends Screen{
 
     }
 
-    private void transitionToPlayState() {
-        PlayScreen playScreen = new PlayScreen(processing, world);
+    private void transitionToPlayState(FCompound compound) {
+        PlayScreen playScreen = new PlayScreen(processing, world, compound);
         processing.setGui(playScreen);
     }
 }

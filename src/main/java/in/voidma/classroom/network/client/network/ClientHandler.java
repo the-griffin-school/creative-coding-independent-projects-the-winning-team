@@ -25,7 +25,7 @@ import java.net.SocketAddress;
  *
  * @author Miles
  */
-public class ClientHandler extends ChannelInboundHandlerAdapter implements ChannelOutboundHandler, ChannelInboundHandler{
+public class ClientHandler extends ChannelInboundHandlerAdapter implements ChannelOutboundHandler, ChannelInboundHandler {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

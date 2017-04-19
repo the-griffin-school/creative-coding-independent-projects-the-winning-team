@@ -27,14 +27,12 @@
         </developer>
     </developers>
 
-    <repositories>
-        <!--other repositories if any-->
-        <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:${project.basedir}/repo</url>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+    <!--<repository>-->
+    <!--<id>project.local</id>-->
+    <!--<url>file:${project.basedir}/repo</url>-->
+    <!--</repository>-->
+    <!--</repositories>-->
 
     <dependencies>
         <dependency>
@@ -54,9 +52,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.processing</groupId>
+            <groupId>common.local</groupId>
             <artifactId>fisica</artifactId>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>common.local</groupId>
+            <artifactId>controlp5</artifactId>
+            <version>2.2.4</version>
         </dependency>
     </dependencies>
 
@@ -91,21 +94,38 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>2.5.1</version>
-                <configuration>
-                    <groupId>org.prosessing</groupId>
-                    <artifactId>fisica</artifactId>
-                    <version>1.0</version>
-                    <packaging>jar</packaging>
-                    <file>${basedir}/dependencies/fisica-1.0.jar</file>
-                    <generatePom>true</generatePom>
-                </configuration>
                 <executions>
                     <execution>
-                        <id>install-jar-lib</id>
+                        <id>install-fisica</id>
                         <goals>
                             <goal>install-file</goal>
                         </goals>
                         <phase>validate</phase>
+                        <configuration>
+                            <groupId>common.local</groupId>
+                            <artifactId>fisica</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/dependencies/fisica-1.0.jar</file>
+                            <generatePom>true</generatePom>
+                            <!--<localRepositoryPath>${basedir}/repo</localRepositoryPath>-->
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install-controllP5</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <groupId>common.local</groupId>
+                            <artifactId>controlP5</artifactId>
+                            <version>2.2.4</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/dependencies/controlP5.jar</file>
+                            <generatePom>true</generatePom>
+                            <!--<localRepositoryPath>${basedir}/repo</localRepositoryPath>-->
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

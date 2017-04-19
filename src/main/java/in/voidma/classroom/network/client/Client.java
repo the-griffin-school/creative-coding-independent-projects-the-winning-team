@@ -31,8 +31,8 @@ import processing.core.PApplet;
 public class Client extends PApplet {
 
     private static Client INSTANCE;
-
     private Screen gui;
+    private int lastUpdate;
 
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
@@ -60,7 +60,8 @@ public class Client extends PApplet {
 
     @Override
     public void draw() {
-        gui.update();
+        gui.update(millis() - lastUpdate);
+        lastUpdate = millis();
         gui.draw();
     }
 
