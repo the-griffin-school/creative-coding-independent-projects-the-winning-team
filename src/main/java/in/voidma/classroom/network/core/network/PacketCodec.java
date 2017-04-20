@@ -13,25 +13,46 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.protocol;
+package in.voidma.classroom.network.core.network;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
 import io.netty.channel.ChannelOutboundHandler;
-import io.netty.handler.codec.MessageToByteEncoder;
+import io.netty.handler.codec.MessageToMessageCodec;
+
+import java.util.List;
 
 /**
- * Encodes a envelope instance into a downstream oriented bytebuf
+ * Encodes Packet -> Envelope and decodes Envelope -> Packet with the PacketType enum
  *
  * @author Miles
  * @author Sam
  */
-public class EnvelopeEncoder extends MessageToByteEncoder<Envelope> implements ChannelOutboundHandler {
+public class PacketCodec extends MessageToMessageCodec<Envelope, Packet> implements ChannelOutboundHandler, ChannelInboundHandler{
+
     @Override
-    //creates big byte array with all the data
-    protected void encode(ChannelHandlerContext channelHandlerContext, Envelope envelope, ByteBuf out) throws Exception {
-        out.writeByte(envelope.getID());
-        out.writeInt(envelope.getPayload().array().length);
-        out.writeBytes(envelope.getPayload());
+    protected void encode(ChannelHandlerContext channelHandlerContext, Packet packet, List<Object> out) throws Exception {
+        byte id = packet.getID();
+
+        ByteBuf payload = ByteBufAllocator.DEFAULT.buffer();
+        packet.encode(payload);
+
+        Envelope envelope = new Envelope();
+        envelope.setPayload(payload);
+        envelope.setID(id);
+
+        out.add(envelope);
+    }
+
+    @Override
+    protected void decode(ChannelHandlerContext channelHandlerContext, Envelope envelope, List<Object> out) throws Exception {
+        Class<? extends Packet> packetClass = PacketType.getPacket(envelope.getID());
+
+        Packet packet = packetClass.newInstance();
+        packet.decode(envelope.getPayload());
+
+        out.add(packet);
     }
 }

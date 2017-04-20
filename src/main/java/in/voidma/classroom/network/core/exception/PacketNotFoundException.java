@@ -16,7 +16,7 @@
 
 package in.voidma.classroom.network.core.exception;
 
-import in.voidma.classroom.network.core.protocol.packet.Packet;
+import in.voidma.classroom.network.core.network.Packet;
 
 /**
  * An exception thrown if there is no match found for a given packet ID.

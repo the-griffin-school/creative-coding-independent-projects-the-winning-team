@@ -13,7 +13,7 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.protocol;
+package in.voidma.classroom.network.core.network;
 
 import io.netty.buffer.ByteBuf;
 

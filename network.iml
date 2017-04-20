@@ -16,5 +16,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.5" level="project" />
     <orderEntry type="library" name="Maven: common.local:fisica:1.0" level="project" />
     <orderEntry type="library" name="Maven: common.local:controlp5:2.2.4" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:21.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.5" level="project" />
   </component>
 </module>
