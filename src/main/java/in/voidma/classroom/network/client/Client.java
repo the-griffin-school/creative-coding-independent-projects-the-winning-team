@@ -57,7 +57,6 @@ public class Client extends PApplet {
         // Networking Setup
 
         // Graphics Setup
-
         gui = new LoginScreen(this);
     }
 

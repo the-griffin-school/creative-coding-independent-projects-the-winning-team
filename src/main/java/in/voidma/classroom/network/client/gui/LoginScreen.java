@@ -1,6 +1,5 @@
 package in.voidma.classroom.network.client.gui;
 
-import controlP5.ControlP5;
 import fisica.FCompound;
 import in.voidma.classroom.network.client.Client;
 import processing.core.PConstants;
@@ -11,16 +10,12 @@ import processing.core.PConstants;
 
 public class LoginScreen extends Screen {
 
-    ControlP5 cp5;
-
-
     public LoginScreen(Client client) {
         super(client);
-        cp5 = new ControlP5(processing);
 
         processing.background(0, 77, 153);
-
         world.draw();
+
         cp5.addTextfield("nickname", (processing.width / 2) - 150, processing.height / 2, 300, 50);
 
         processing.rectMode(PConstants.CENTER);
@@ -42,7 +37,7 @@ public class LoginScreen extends Screen {
 
     }
 
-   public void nickname(String theValue) {
+    public void nickname(String theValue) {
        System.out.println("### got an event from textA : "+theValue);
     }
 
