@@ -13,8 +13,9 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.network;
+package in.voidma.classroom.network.core.network.codec;
 
+import in.voidma.classroom.network.core.network.Envelope;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandler;
@@ -28,7 +29,7 @@ import java.util.List;
  * @author Miles
  * @author Sam
  */
-public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingState> implements ChannelInboundHandler{
+public class ByteToEnvelopeDecoder extends ReplayingDecoder<ByteToEnvelopeDecoder.DecodingState> implements ChannelInboundHandler {
 
     private Envelope message;
     private int length;
@@ -37,7 +38,7 @@ public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingSt
      * Decodes byte array into envelope object
      */
     //constructor
-    public EnvelopeDecoder() {
+    public ByteToEnvelopeDecoder() {
         super(DecodingState.TYPE);
         this.message = new Envelope();
     }
@@ -48,7 +49,7 @@ public class EnvelopeDecoder extends ReplayingDecoder<EnvelopeDecoder.DecodingSt
         switch (state()) {
             case TYPE:
                 //gets ID so we can defien the type of packet
-                message.setID(byteBuf.readByte());
+                message.setID(byteBuf.readInt());
                 checkpoint(DecodingState.PAYLOAD_LENGTH);
             case PAYLOAD_LENGTH:
                 //get the lengthn of the array so we know what we are decoding

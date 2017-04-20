@@ -24,25 +24,25 @@ import io.netty.buffer.ByteBuf;
  * @author Sam
  */
 public class Envelope {
-    private byte id;
+    private int id;
     private ByteBuf payload;
     //constructor
-    Envelope() {
+    public Envelope() {
     }
     //base functions to be inherited
-    byte getID() {
+    public int getID() {
         return id;
     }
 
-    void setID(byte type) {
+    public void setID(int type) {
         this.id = type;
     }
 
-    ByteBuf getPayload() {
+    public ByteBuf getPayload() {
         return payload;
     }
 
-    void setPayload(ByteBuf payload) {
+    public void setPayload(ByteBuf payload) {
         this.payload = payload;
     }
 }

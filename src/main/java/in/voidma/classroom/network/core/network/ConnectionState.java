@@ -3,11 +3,11 @@ package in.voidma.classroom.network.core.network;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Maps;
-import com.sun.istack.internal.Nullable;
 import in.voidma.classroom.network.client.Client;
 import in.voidma.classroom.network.core.network.handshake.client.Handshake;
 import in.voidma.classroom.network.core.network.login.client.CLoginStart;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public enum ConnectionState {

@@ -1,28 +1,28 @@
 package in.voidma.classroom.network.client.gui;
 
+import fisica.FBody;
+import fisica.FCompound;
 import in.voidma.classroom.network.client.Client;
-import in.voidma.classroom.network.client.entity.Cell;
-import in.voidma.classroom.network.client.entity.Player;
+
+import java.util.ArrayList;
 
 /**
  * Created by schan on 4/18/2017.
  */
 public class DeathScreen extends Screen {
 
-    Player ourPlayer;
-    int finalMass;
+    int finalMass = 0;
+    private FCompound ourPlayer;
 
     public DeathScreen(Client client) {
         super(client);
 
-        for (int i = 0; i < ourPlayer.getCells().size(); i++) {
-            Cell cell = (Cell)ourPlayer.getCells().get(i);
-
-            finalMass += cell.getMass();
+        for (FBody body : (ArrayList<FBody>) ourPlayer.getBodies()) {
+            finalMass += body.getMass();
         }
     }
 
-    public void update() {
+    public void update(int seconds) {
 
     }
 
