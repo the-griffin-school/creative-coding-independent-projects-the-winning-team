@@ -1,4 +1,3 @@
-//
 //  o8o                                         .        88                           .                              .        o8o
 //  `"'                                       .o8       .8'                         .o8                            .o8        `"'
 // oooo  ooo. .oo.   oo.ooooo.  oooo  oooo  .o888oo    .8'   .ooooo.  oooo  oooo  .o888oo oo.ooooo.  oooo  oooo  .o888oo     oooo   .ooooo.
@@ -14,25 +13,36 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.exception;
+package in.voidma.classroom.network.core.network;
 
-import in.voidma.classroom.network.core.network.Packet;
+import io.netty.buffer.ByteBuf;
 
 /**
- * An exception thrown if there is no match found for a given packet ID.
+ * Encodes a Packet into serializable data with ID and Payload
  *
  * @author Miles
+ * @author Sam
  */
-public class PacketNotFoundException extends Exception {
-
-    private Class<? extends Packet> p;
-
-    public PacketNotFoundException(Class<? extends Packet> p) {
-        super(p.getSimpleName() + " is not a valid packet class");
-        this.p = p;
+public class Envelope {
+    private int id;
+    private ByteBuf payload;
+    //constructor
+    public Envelope() {
+    }
+    //base functions to be inherited
+    public int getID() {
+        return id;
     }
 
-    public Class<? extends Packet> getPacket() {
-        return p;
+    public void setID(int type) {
+        this.id = type;
+    }
+
+    public ByteBuf getPayload() {
+        return payload;
+    }
+
+    public void setPayload(ByteBuf payload) {
+        this.payload = payload;
     }
 }

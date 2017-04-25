@@ -1,4 +1,3 @@
-//
 //  o8o                                         .        88                           .                              .        o8o
 //  `"'                                       .o8       .8'                         .o8                            .o8        `"'
 // oooo  ooo. .oo.   oo.ooooo.  oooo  oooo  .o888oo    .8'   .ooooo.  oooo  oooo  .o888oo oo.ooooo.  oooo  oooo  .o888oo     oooo   .ooooo.
@@ -14,25 +13,26 @@
 // Samantha Channow
 //
 
-package in.voidma.classroom.network.core.exception;
+package in.voidma.classroom.network.core.network.codec;
 
-import in.voidma.classroom.network.core.network.Packet;
+import in.voidma.classroom.network.core.network.Envelope;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.handler.codec.MessageToByteEncoder;
 
 /**
- * An exception thrown if there is no match found for a given packet ID.
+ * Encodes a envelope instance into a downstream oriented bytebuf
  *
  * @author Miles
+ * @author Sam
  */
-public class PacketNotFoundException extends Exception {
-
-    private Class<? extends Packet> p;
-
-    public PacketNotFoundException(Class<? extends Packet> p) {
-        super(p.getSimpleName() + " is not a valid packet class");
-        this.p = p;
-    }
-
-    public Class<? extends Packet> getPacket() {
-        return p;
+public class EnvelopeToByteEncoder extends MessageToByteEncoder<Envelope> implements ChannelOutboundHandler {
+    @Override
+    //creates big byte array with all the data
+    protected void encode(ChannelHandlerContext channelHandlerContext, Envelope envelope, ByteBuf out) throws Exception {
+        out.writeInt(envelope.getID());
+        out.writeInt(envelope.getPayload().array().length);
+        out.writeBytes(envelope.getPayload());
     }
 }

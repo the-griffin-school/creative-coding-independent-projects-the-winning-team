@@ -1,55 +1,53 @@
 package in.voidma.classroom.network.client.gui;
 
-import fisica.FWorld;
-import fisica.Fisica;
+import fisica.FCompound;
 import in.voidma.classroom.network.client.Client;
+import in.voidma.classroom.network.core.network.NetworkManager;
+import processing.core.PConstants;
+
+import java.net.InetAddress;
 
 /**
  * Created by Zane on 4/4/2017.
  */
-public class LoginScreen extends Screen{
 
-    FWorld world;
-    String nickname;
+public class LoginScreen extends Screen {
 
-    public LoginScreen(Client client) {
+    public LoginScreen(Client client, InetAddress address, int port) {
         super(client);
 
-        Fisica.init(client);
-        this.world = new FWorld();
+        NetworkManager networkManager = NetworkManager.createNetworkManagerAndConnect(address, port, true);
+
+        processing.background(0, 77, 153);
+        world.draw();
+
+        cp5.addTextfield("nickname", (processing.width / 2) - 150, processing.height / 2, 300, 50);
+
+        processing.rectMode(PConstants.CENTER);
+        processing.rect(processing.width / 2, processing.height / 2, 600, 400);
+        processing.textAlign(PConstants.CENTER, PConstants.BOTTOM);
+        processing.textSize(30);
+        processing.text("InputOutput.io", processing.width / 2, processing.height / 2);
+        processing.textSize(20);
+        processing.text("Enter a nickname", processing.width / 2, processing.height / 2);
     }
 
     @Override
     public void update(int seconds) {
-
+        world.step(seconds);
     }
-
-    @Override
-    public void keyPressed(){
-        nickname += processing.key;
-        if (processing.key == processing.ENTER){
-
-        }
-    }
-
 
     @Override
     public void draw() {
 
-        processing.background(0,77,153);
-        processing.rectMode(processing.CENTER);
-        processing.rect(processing.height/2, processing.width/2, 600, 300);
-        processing.textAlign(processing.CENTER, processing.BOTTOM);
-        processing.textSize(30);
-        processing.text("InputOutput.io", processing.height/2, processing.width/2);
-        processing.textSize(20);
-        processing.text("Enter a nickname", processing.height/2, processing.width/2);
-
-
     }
 
-    private void transitionToPlayState() {
-        PlayScreen playScreen = new PlayScreen(processing, world);
+    public void nickname(String theValue) {
+       System.out.println("### got an event from textA : "+theValue);
+    }
+
+    private void transitionToPlayState(FCompound compound) {
+        PlayScreen playScreen = new PlayScreen(processing, world, compound);
         processing.setGui(playScreen);
     }
 }

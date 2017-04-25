@@ -16,9 +16,11 @@
 
 package in.voidma.classroom.network.client;
 
-import in.voidma.classroom.network.client.gui.LoginScreen;
 import in.voidma.classroom.network.client.gui.Screen;
+import in.voidma.classroom.network.client.gui.ServerSelectionScreen;
+import in.voidma.classroom.network.core.network.NetworkManager;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 
 
 /**
@@ -31,8 +33,9 @@ import processing.core.PApplet;
 public class Client extends PApplet {
 
     private static Client INSTANCE;
-
     private Screen gui;
+    private int lastUpdate;
+    private NetworkManager networkManager;
 
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
@@ -54,17 +57,31 @@ public class Client extends PApplet {
         // Networking Setup
 
         // Graphics Setup
-
-        gui = new LoginScreen(this);
+        gui = new ServerSelectionScreen(this);
     }
 
     @Override
     public void draw() {
-        gui.update();
+        gui.update(millis() - lastUpdate);
+        lastUpdate = millis();
         gui.draw();
     }
 
     public void setGui(Screen gui) {
         this.gui = gui;
+    }
+
+    public NetworkManager getNetworkManager() {
+        return networkManager;
+    }
+
+    @Override
+    public void keyPressed() {
+        gui.keyPressed();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent event) {
+        gui.keyPressed(event);
     }
 }

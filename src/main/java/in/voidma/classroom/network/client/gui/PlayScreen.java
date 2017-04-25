@@ -1,55 +1,54 @@
 package in.voidma.classroom.network.client.gui;
 
+import fisica.FBlob;
+import fisica.FCompound;
 import fisica.FWorld;
-import fisica.Fisica;
 import in.voidma.classroom.network.client.Client;
-import in.voidma.classroom.network.client.entity.Player;
-import in.voidma.classroom.network.core.gameplay.entity.ICell;
 
 /**
  * Created by Zane on 4/4/2017.
  */
 public class PlayScreen extends Screen {
 
-    Player ourPlayer;
-    FWorld world;
+    private FCompound ourPlayer;
 
-    public PlayScreen(Client client, FWorld world) {
-        super(client);
-        this.world = world;
+    private float averageMass = 0;
+    private float averageX = 0;
+    private float averageY = 0;
+
+    public PlayScreen(Client processing, FWorld world, FCompound ourPlayer) {
+        super(processing, world);
+        this.ourPlayer = ourPlayer;
     }
 
-
-    public PlayScreen(Client client) {
-        super(client);
-
-        Fisica.init(client);
-        this.world = new FWorld();
+    public PlayScreen(Client processing, FCompound ourPlayer) {
+        super(processing);
+        this.ourPlayer = ourPlayer;
     }
 
     @Override
     public void update(int seconds) {
-        world.step(seconds); //TODO: Update with dynamic time increment
+        world.step(seconds);
+
+        for (Object body : ourPlayer.getBodies()) {
+            FBlob blob = (FBlob) body;
+            averageMass += blob.getMass();
+            averageX += blob.getX();
+            averageY += blob.getY();
+        }
+
+        int n = ourPlayer.getBodies().size();
+        averageMass = averageMass / n;
+        averageX = averageX / n;
+        averageY = averageY / n;
     }
 
     @Override
     public void draw() {
-        float averageMass = 0;
-        float averageLocationX = 0;
-        float averageLocationY = 0;
 
-        for (ICell c : ourPlayer.getCells()) {
-            averageMass += c.getMass();
-            averageLocationX += c.getLocation().getX();
-            averageLocationY += c.getLocation().getY();
-        }
-
-        averageMass = averageMass / ourPlayer.getCells().size();
-        averageLocationX = averageLocationX / ourPlayer.getCells().size();
-        averageLocationY = averageLocationY / ourPlayer.getCells().size();
-
+        // Translate to focus on selected cell.
         processing.pushMatrix();
-        processing.translate(-1 * averageLocationX, -1 * averageLocationY);
+        processing.translate(-1 * averageX, -1 * averageY);
         processing.scale(10);
         processing.scale(-2 * averageMass);
         world.draw(processing);
