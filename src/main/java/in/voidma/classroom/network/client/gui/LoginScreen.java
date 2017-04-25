@@ -2,7 +2,10 @@ package in.voidma.classroom.network.client.gui;
 
 import fisica.FCompound;
 import in.voidma.classroom.network.client.Client;
+import in.voidma.classroom.network.core.network.NetworkManager;
 import processing.core.PConstants;
+
+import java.net.InetAddress;
 
 /**
  * Created by Zane on 4/4/2017.
@@ -10,8 +13,10 @@ import processing.core.PConstants;
 
 public class LoginScreen extends Screen {
 
-    public LoginScreen(Client client) {
+    public LoginScreen(Client client, InetAddress address, int port) {
         super(client);
+
+        NetworkManager networkManager = NetworkManager.createNetworkManagerAndConnect(address, port, true);
 
         processing.background(0, 77, 153);
         world.draw();

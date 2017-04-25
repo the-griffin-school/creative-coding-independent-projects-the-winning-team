@@ -6,6 +6,7 @@ import com.google.common.collect.Maps;
 import in.voidma.classroom.network.client.Client;
 import in.voidma.classroom.network.core.network.handshake.client.Handshake;
 import in.voidma.classroom.network.core.network.login.client.CLoginStart;
+import in.voidma.classroom.network.core.network.login.server.SDisconnect;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -30,6 +31,7 @@ public enum ConnectionState {
     LOGIN(2) {
         {
             this.registerPacket(PacketDirection.SERVERBOUND, CLoginStart.class);
+            this.registerPacket(PacketDirection.CLIENTBOUND, SDisconnect.class);
         }
     };
 

@@ -16,8 +16,8 @@
 
 package in.voidma.classroom.network.client;
 
-import in.voidma.classroom.network.client.gui.LoginScreen;
 import in.voidma.classroom.network.client.gui.Screen;
+import in.voidma.classroom.network.client.gui.ServerSelectionScreen;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
@@ -57,7 +57,7 @@ public class Client extends PApplet {
         // Networking Setup
 
         // Graphics Setup
-        gui = new LoginScreen(this);
+        gui = new ServerSelectionScreen(this);
     }
 
     @Override
