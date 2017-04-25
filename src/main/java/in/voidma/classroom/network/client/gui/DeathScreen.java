@@ -22,7 +22,7 @@ public class DeathScreen extends Screen {
         }
     }
 
-    public void update() {
+    public void update(int i) {
 
     }
 
