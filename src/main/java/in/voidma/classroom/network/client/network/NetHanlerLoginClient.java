@@ -18,6 +18,6 @@ public class NetHanlerLoginClient extends NetHandlerClient implements INetHandle
     }
 
     public void processDisconnect(SDisconnect packet) {
-        this.client.setGui(new DisconnectScreen());
+        this.client.setGui(new DisconnectScreen(client));
     }
 }
