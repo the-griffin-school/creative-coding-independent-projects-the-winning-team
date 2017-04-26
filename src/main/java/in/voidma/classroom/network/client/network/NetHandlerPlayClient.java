@@ -17,7 +17,7 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
     }
 
     public void processDestroyEntity(Packet packet) {
-        
+
     }
 
     public void processSpawnEntity(Packet packet) {
