@@ -1,6 +1,7 @@
 package in.voidma.classroom.network.client.gui;
 
 import in.voidma.classroom.network.client.Client;
+import processing.core.PFont;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import java.util.Random;
 public class ServerSelectionScreen extends Screen {
 
     ArrayList<ServerInfo> fakeData;
+    PFont titleFont = processing.createFont("Helvetica", 32);
+    PFont serverFont = processing.createFont("Helvetica", 12);
 
     public ServerSelectionScreen(Client processing) {
         super(processing);
@@ -30,12 +33,17 @@ public class ServerSelectionScreen extends Screen {
     public void draw() {
 
         processing.fill(255);
+        processing.textSize(32);
+
         processing.rectMode(processing.CENTER);
         processing.rect(processing.width / 2, processing.height / 2, 600, 400, 10);
         processing.textAlign(processing.CENTER, processing.BOTTOM);
+        processing.textFont(titleFont);
+        processing.text("Input-Output.IO", processing.width/2, processing.height/5);
         processing.fill(0);
         for(int i = 0; i < fakeData.size(); i++) {
-
+            processing.textFont(serverFont);
+            processing.textSize(12);
             processing.text(fakeData.get(i).getName(),processing.width / 2, (processing.height/2)+15*(i+1));
         }
 
