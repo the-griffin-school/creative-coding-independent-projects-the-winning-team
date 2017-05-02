@@ -10,12 +10,12 @@ import java.util.UUID;
 /**
  * Created by schan on 4/26/2017.
  */
-public class CPlayerCellPosition implements Packet<INetHandlerPlayServer>{
+public class CVelocity implements Packet<INetHandlerPlayServer>{
 
     int x, y;
     UUID uuid;
 
-    public CPlayerCellPosition(UUID uuid, int x, int y) {
+    public CVelocity(UUID uuid, int x, int y) {
         this.x = x;
         this.y = y;
         this.uuid = uuid;
@@ -36,6 +36,6 @@ public class CPlayerCellPosition implements Packet<INetHandlerPlayServer>{
     }
 
     public void processPacket(INetHandlerPlayServer handler) {
-        handler.processPlayerCellPosition(this);
+        handler.processVelocity(this);
     }
 }
