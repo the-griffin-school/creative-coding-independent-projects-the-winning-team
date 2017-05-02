@@ -31,4 +31,8 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
     public void processMassUpdate(Packet packet) {
 
     }
+
+    public void processDeath(Packet packet) {
+        
+    }
 }

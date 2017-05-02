@@ -12,4 +12,6 @@ public interface INetHandlerPlayClient extends INetHandler {
     void processDestroyEntity(Packet packet);
 
     void processSpawnEntity(Packet packet);
+
+    void processDeath(Packet packet);
 }
