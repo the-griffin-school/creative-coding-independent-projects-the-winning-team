@@ -19,14 +19,15 @@ public class SDestroyEntity implements Packet<INetHandlerPlayClient> {
     }
 
     public void readPacketData(ByteBuf buf) throws IOException {
-        
+        uuid = new UUID(buf.readLong(), buf.readLong());
     }
 
     public void writePacketData(ByteBuf buf) throws IOException {
-
+        buf.writeLong(uuid.getMostSignificantBits());
+        buf.writeLong(uuid.getLeastSignificantBits());
     }
 
     public void processPacket(INetHandlerPlayClient handler) {
-
+        handler.processDestroyEntity(this);
     }
 }
