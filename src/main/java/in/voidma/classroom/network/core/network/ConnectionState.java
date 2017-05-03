@@ -8,6 +8,10 @@ import in.voidma.classroom.network.core.network.handshake.client.Handshake;
 import in.voidma.classroom.network.core.network.login.client.CLoginStart;
 import in.voidma.classroom.network.core.network.login.server.SDisconnect;
 import in.voidma.classroom.network.core.network.login.server.SLoginSuccess;
+import in.voidma.classroom.network.core.network.play.Client.CEject;
+import in.voidma.classroom.network.core.network.play.Client.CVelocity;
+import in.voidma.classroom.network.core.network.play.Client.CSplit;
+import in.voidma.classroom.network.core.network.play.Server.*;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -21,7 +25,14 @@ public enum ConnectionState {
     },
     PLAY(0) {
         {
-
+            this.registerPacket(PacketDirection.CLIENTBOUND, SMassUpdate.class);
+            this.registerPacket(PacketDirection.CLIENTBOUND, SEntityMove.class);
+            this.registerPacket(PacketDirection.CLIENTBOUND, SDestroyEntity.class);
+            this.registerPacket(PacketDirection.CLIENTBOUND, SSpawnEntity.class);
+            this.registerPacket(PacketDirection.CLIENTBOUND, SDeath.class);
+            this.registerPacket(PacketDirection.SERVERBOUND, CEject.class);
+            this.registerPacket(PacketDirection.SERVERBOUND, CVelocity.class);
+            this.registerPacket(PacketDirection.SERVERBOUND, CSplit.class);
         }
     },
     STATUS(1) {
