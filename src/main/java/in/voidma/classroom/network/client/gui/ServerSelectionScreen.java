@@ -19,6 +19,8 @@ public class ServerSelectionScreen extends Screen {
         for (int i = 0; i < n + 3; i++) {
             fakeData.add(new ServerInfo(r, "FakeServer" + i));
         }
+
+        //processing.color c1 = color(44,62,80);
         processing.background(0, 119, 255, 50);
     }
 
@@ -29,18 +31,32 @@ public class ServerSelectionScreen extends Screen {
 
     public void draw() {
 
+        setGradient(0, 0, processing.width, processing.height, 44, 62, 80, 52, 152, 219, 2);
         processing.fill(255);
         processing.rectMode(processing.CENTER);
         processing.rect(processing.width / 2, processing.height / 2, 600, 400, 10);
         processing.textAlign(processing.CENTER, processing.BOTTOM);
         processing.fill(0);
-        for(int i = 0; i < fakeData.size(); i++) {
+        for (int i = 0; i < fakeData.size(); i++) {
 
-            processing.text(fakeData.get(i).getName(),processing.width / 2, (processing.height/2)+15*(i+1));
+            processing.text(fakeData.get(i).getName(), processing.width / 2, (processing.height / 2) + 15 * (i + 1));
         }
+    }
 
         //ServerInfo selected = fakeData.get(0);
         //processing.setGui(new LoginScreen(processing, selected.getAddress(), selected.getPort()));
+    void setGradient(int x, int y, float w, float h, int c1r, int c1g, int c1b, int c2r, int c2g, int c2b, int axis ) {
+
+        processing.noFill();
+
+         if (axis == 2) {  // Left to right gradient
+            for (int i = x; i <= x+w; i++) {
+                float inter = processing.map(i, x, x+w, 0, 1);
+                int c = processing.lerpColor(processing.color(c1r,c1g,c1b), processing.color(c2r,c2g,c2b), inter);
+                processing.stroke(c);
+                processing.line(i, y, i, y+h);
+            }
+        }
     }
 
     private enum serverLocation {
