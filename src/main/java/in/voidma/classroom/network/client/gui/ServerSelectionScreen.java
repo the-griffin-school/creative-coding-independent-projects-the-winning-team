@@ -15,13 +15,26 @@ public class ServerSelectionScreen extends Screen {
 
         fakeData = new ArrayList<ServerInfo>();
         Random r = new Random();
-        int n = Math.abs(r.nextInt() % 12 );
+        int n = Math.abs(r.nextInt() % 10 );
         for (int i = 0; i < n + 3; i++) {
             fakeData.add(new ServerInfo(r, "FakeServer" + i));
         }
 
         //processing.color c1 = color(44,62,80);
         processing.background(0, 119, 255, 50);
+
+
+        for (int i = 0; i < fakeData.size(); i++) {
+
+            //processing.text(fakeData.get(i).getName(), processing.width / 2, (processing.height / 2) + 15 * (i + 1));
+
+            cp5.addButton(fakeData.get(i).getName())
+                    .setValue(0)
+                    .setPosition(processing.width / 2 - 150,((processing.height / 2)-180)+30  * (i + 1))
+                    .setSize(300,30)
+            ;
+        }
+
     }
 
 
@@ -37,10 +50,7 @@ public class ServerSelectionScreen extends Screen {
         processing.rect(processing.width / 2, processing.height / 2, 600, 400, 10);
         processing.textAlign(processing.CENTER, processing.BOTTOM);
         processing.fill(0);
-        for (int i = 0; i < fakeData.size(); i++) {
 
-            processing.text(fakeData.get(i).getName(), processing.width / 2, (processing.height / 2) + 15 * (i + 1));
-        }
     }
 
         //ServerInfo selected = fakeData.get(0);
@@ -49,7 +59,7 @@ public class ServerSelectionScreen extends Screen {
 
         processing.noFill();
 
-         if (axis == 2) {  // Left to right gradient
+         if (axis == 2) {
             for (int i = x; i <= x+w; i++) {
                 float inter = processing.map(i, x, x+w, 0, 1);
                 int c = processing.lerpColor(processing.color(c1r,c1g,c1b), processing.color(c2r,c2g,c2b), inter);
