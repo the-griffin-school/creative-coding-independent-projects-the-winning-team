@@ -1,9 +1,7 @@
 package in.voidma.classroom.network.server.network;
 
-import in.voidma.classroom.network.client.network.NetHandlerClient;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import in.voidma.classroom.network.core.network.Packet;
-import in.voidma.classroom.network.core.network.play.INetHandlerPlayClient;
 import in.voidma.classroom.network.core.network.play.INetHandlerPlayServer;
 import in.voidma.classroom.network.core.util.IUpdatable;
 import in.voidma.classroom.network.server.Server;
@@ -25,11 +23,11 @@ public class NetHandlerPlayServer extends NetHandlerServer implements INetHandle
 
     }
 
-    public void processPlayerCellPosition(Packet packet) {
+    public void processSplit(Packet packet) {
 
     }
 
-    public void processSplit(Packet packet) {
+    public void processVelocity(Packet packet) {
 
     }
 }
