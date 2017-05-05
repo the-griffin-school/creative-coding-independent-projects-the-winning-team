@@ -3,6 +3,7 @@ package in.voidma.classroom.network.server.network;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import in.voidma.classroom.network.core.network.login.INetHandlerLoginServer;
 import in.voidma.classroom.network.core.network.login.client.CLoginStart;
+import in.voidma.classroom.network.core.network.login.server.SDisconnect;
 import in.voidma.classroom.network.server.Server;
 
 public class NetHandlerLoginServer extends NetHandlerServer implements INetHandlerLoginServer {
@@ -13,5 +14,6 @@ public class NetHandlerLoginServer extends NetHandlerServer implements INetHandl
 
     public void processLoginStart(CLoginStart packet) {
 
+        networkManager.sendPacket(new SDisconnect());
     }
 }

@@ -23,15 +23,11 @@ public class NetHandlerPlayServer extends NetHandlerServer implements INetHandle
 
     }
 
-    public void processVelocity(Packet packet) {
-
-    }
-
-    public void processPlayerCellPosition(Packet packet) {
-
-    }
-
     public void processSplit(Packet packet) {
+
+    }
+
+    public void processVelocity(Packet packet) {
 
     }
 }

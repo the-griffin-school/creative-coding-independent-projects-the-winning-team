@@ -1,7 +1,6 @@
 package in.voidma.classroom.network.client.gui;
 
 import in.voidma.classroom.network.client.Client;
-import processing.core.PFont;
 
 import java.net.InetAddress;
 import java.util.ArrayList;
@@ -10,19 +9,32 @@ import java.util.Random;
 public class ServerSelectionScreen extends Screen {
 
     ArrayList<ServerInfo> fakeData;
-    PFont titleFont = processing.createFont("Helvetica", 32);
-    PFont serverFont = processing.createFont("Helvetica", 12);
 
     public ServerSelectionScreen(Client processing) {
         super(processing);
 
         fakeData = new ArrayList<ServerInfo>();
         Random r = new Random();
-        int n = Math.abs(r.nextInt() % 12 );
+        int n = Math.abs(r.nextInt() % 10 );
         for (int i = 0; i < n + 3; i++) {
             fakeData.add(new ServerInfo(r, "FakeServer" + i));
         }
+
+        //processing.color c1 = color(44,62,80);
         processing.background(0, 119, 255, 50);
+
+
+        for (int i = 0; i < fakeData.size(); i++) {
+
+            //processing.text(fakeData.get(i).getName(), processing.width / 2, (processing.height / 2) + 15 * (i + 1));
+
+            cp5.addButton(fakeData.get(i).getName())
+                    .setValue(0)
+                    .setPosition(processing.width / 2 - 150,((processing.height / 2)-180)+30  * (i + 1))
+                    .setSize(300,30)
+            ;
+        }
+
     }
 
 
@@ -32,23 +44,29 @@ public class ServerSelectionScreen extends Screen {
 
     public void draw() {
 
+        setGradient(0, 0, processing.width, processing.height, 44, 62, 80, 52, 152, 219, 2);
         processing.fill(255);
-        processing.textSize(32);
-
         processing.rectMode(processing.CENTER);
         processing.rect(processing.width / 2, processing.height / 2, 600, 400, 10);
         processing.textAlign(processing.CENTER, processing.BOTTOM);
-        processing.textFont(titleFont);
-        processing.text("Input-Output.IO", processing.width/2, processing.height/5);
         processing.fill(0);
-        for(int i = 0; i < fakeData.size(); i++) {
-            processing.textFont(serverFont);
-            processing.textSize(12);
-            processing.text(fakeData.get(i).getName(),processing.width / 2, (processing.height/2)+15*(i+1));
-        }
+
+    }
 
         //ServerInfo selected = fakeData.get(0);
         //processing.setGui(new LoginScreen(processing, selected.getAddress(), selected.getPort()));
+    void setGradient(int x, int y, float w, float h, int c1r, int c1g, int c1b, int c2r, int c2g, int c2b, int axis ) {
+
+        processing.noFill();
+
+         if (axis == 2) {
+            for (int i = x; i <= x+w; i++) {
+                float inter = processing.map(i, x, x+w, 0, 1);
+                int c = processing.lerpColor(processing.color(c1r,c1g,c1b), processing.color(c2r,c2g,c2b), inter);
+                processing.stroke(c);
+                processing.line(i, y, i, y+h);
+            }
+        }
     }
 
     private enum serverLocation {
