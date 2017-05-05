@@ -33,6 +33,6 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
     }
 
     public void processDeath(Packet packet) {
-        
+
     }
 }
