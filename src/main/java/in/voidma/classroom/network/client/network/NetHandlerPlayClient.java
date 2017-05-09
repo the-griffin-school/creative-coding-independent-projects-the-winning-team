@@ -1,6 +1,8 @@
 package in.voidma.classroom.network.client.network;
 
 import in.voidma.classroom.network.client.Client;
+import in.voidma.classroom.network.client.gui.PlayScreen;
+import in.voidma.classroom.network.client.gui.Screen;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import in.voidma.classroom.network.core.network.Packet;
 import in.voidma.classroom.network.core.network.play.INetHandlerPlayClient;
@@ -11,7 +13,7 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
     public NetHandlerPlayClient(Client client, NetworkManager networkManager) {
         super(client, networkManager);
     }
-
+    //TODO: Miles we think we can use the name of the Fbody object to use as a UUID. It can be converted from string to UUid and reverse so as long as we initialized with the correct name/uuid we could still keep our current packet functionality.
     public void update() {
 
     }
