@@ -1,34 +1,29 @@
 package in.voidma.classroom.network.client.gui;
 
 import fisica.FBlob;
-import fisica.FCompound;
-import fisica.FWorld;
 import in.voidma.classroom.network.client.Client;
+import in.voidma.classroom.network.core.entity.ClientPlayer;
 
 /**
  * Created by Zane on 4/4/2017.
  */
 public class PlayScreen extends Screen {
 
-    private FCompound ourPlayer;
+    private ClientPlayer ourPlayer;
 
     private float averageMass = 0;
     private float averageX = 0;
     private float averageY = 0;
 
-    public PlayScreen(Client processing, FWorld world, FCompound ourPlayer) {
-        super(processing, world);
-        this.ourPlayer = ourPlayer;
-    }
+    public PlayScreen(Client processing, ClientPlayer ourPlayer) {
 
-    public PlayScreen(Client processing, FCompound ourPlayer) {
         super(processing);
         this.ourPlayer = ourPlayer;
     }
 
     @Override
     public void update(int seconds) {
-        world.step(seconds);
+        //Step world here
 
         for (Object body : ourPlayer.getBodies()) {
             FBlob blob = (FBlob) body;
@@ -51,7 +46,7 @@ public class PlayScreen extends Screen {
         processing.translate(-1 * averageX, -1 * averageY);
         processing.scale(10);
         processing.scale(-2 * averageMass);
-        world.draw(processing);
+        //Draw world here
         processing.popMatrix();
     }
 }

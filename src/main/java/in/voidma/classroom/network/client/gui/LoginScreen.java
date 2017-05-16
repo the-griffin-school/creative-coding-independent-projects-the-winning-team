@@ -1,6 +1,5 @@
 package in.voidma.classroom.network.client.gui;
 
-import fisica.FCompound;
 import in.voidma.classroom.network.client.Client;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import processing.core.PConstants;
@@ -19,13 +18,13 @@ public class LoginScreen extends Screen {
         NetworkManager networkManager = NetworkManager.createNetworkManagerAndConnect(address, port, true);
 
         processing.background(0, 77, 153);
-        world.draw();
+        // Draw here
 
         cp5.addTextfield("nickname", (processing.width / 2) - 150, processing.height / 2, 300, 50);
 
-        processing.rectMode(processing.CENTER);
+        processing.rectMode(PConstants.CENTER);
         processing.rect(processing.width / 2, processing.height / 2, 600, 400, 10);
-        processing.textAlign(processing.CENTER, processing.BOTTOM);
+        processing.textAlign(PConstants.CENTER, PConstants.BOTTOM);
         processing.textSize(30);
         processing.text("InputOutput.io", processing.width / 2, processing.height / 2);
         processing.textSize(20);
@@ -34,7 +33,7 @@ public class LoginScreen extends Screen {
 
     @Override
     public void update(int seconds) {
-        world.step(seconds);
+        //Step simulation here
     }
 
     @Override
@@ -46,8 +45,9 @@ public class LoginScreen extends Screen {
        System.out.println("### got an event from textA : "+theValue);
     }
 
-    private void transitionToPlayState(FCompound compound) {
-        PlayScreen playScreen = new PlayScreen(processing, world, compound);
+    private void transitionToPlayState() {
+
+        PlayScreen playScreen = new PlayScreen(processing);
         processing.setGui(playScreen);
     }
 }
