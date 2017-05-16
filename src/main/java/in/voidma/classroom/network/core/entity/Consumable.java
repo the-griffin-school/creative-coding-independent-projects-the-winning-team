@@ -11,7 +11,7 @@ public class Consumable extends Blob {
 
     Color color;
 
-    public Consumable(UUID id, int mass, long x, long y) {
+    public Consumable(UUID id, int mass, float x, float y) {
 
         super(id, mass, x, y);
         color = Color.randomColor();

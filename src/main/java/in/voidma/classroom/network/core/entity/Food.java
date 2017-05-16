@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Food extends Consumable {
 
-    public Food(UUID id, int mass, long x, long y) {
+    public Food(UUID id, int mass, float x, float y) {
 
         super(id, mass, x, y);
     }

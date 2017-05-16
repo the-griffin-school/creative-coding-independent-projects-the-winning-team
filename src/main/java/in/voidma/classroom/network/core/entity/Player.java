@@ -1,5 +1,9 @@
 package in.voidma.classroom.network.core.entity;
 
+import in.voidma.classroom.network.core.util.Color;
+import in.voidma.classroom.network.core.util.Location;
+import processing.core.PApplet;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -50,5 +54,27 @@ public class Player extends Entity implements Drawable {
     public void deregisterCell(Cell cell) {
 
         cells.remove(entityStore.get(cell));
+    }
+
+    public Location calculateCenterPoint() {
+
+        //Weighted algebraic mean
+
+        int totalMass = 0;
+        float weightedX = 0;
+        float weightedY = 0;
+
+        for (UUID id : cells) {
+            Cell cell = entityStore.get(id, Cell.class);
+
+            totalMass += cell.getMass();
+            weightedX += (float) cell.getMass() * cell.getX();
+            weightedY += (float) cell.getMass() * cell.getY();
+        }
+
+        float averageX = weightedX / totalMass;
+        float averageY = weightedY / totalMass;
+
+        return new Location(averageX, averageY);
     }
 }

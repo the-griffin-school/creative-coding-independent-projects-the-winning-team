@@ -47,7 +47,7 @@ public class LoginScreen extends Screen {
 
     private void transitionToPlayState() {
 
-        PlayScreen playScreen = new PlayScreen(processing);
+        PlayScreen playScreen = new PlayScreen(processing, null);
         processing.setGui(playScreen);
     }
 }

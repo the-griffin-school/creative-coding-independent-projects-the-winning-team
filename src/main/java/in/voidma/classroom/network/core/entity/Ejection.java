@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Ejection extends Consumable {
 
-    public Ejection(UUID id, int mass, long x, long y) {
+    public Ejection(UUID id, int mass, float x, float y) {
 
         super(id, mass, x, y);
     }

@@ -11,7 +11,7 @@ public class Cell extends Blob {
 
     private UUID playerID;
 
-    public Cell(UUID id, UUID playerID, int mass, long x, long y) {
+    public Cell(UUID id, UUID playerID, int mass, float x, float y) {
 
         super(id, mass, x, y);
         this.playerID = playerID;

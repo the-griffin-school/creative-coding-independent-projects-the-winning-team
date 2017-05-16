@@ -11,9 +11,9 @@ import java.util.UUID;
 public abstract class Blob extends Entity implements Drawable {
 
     private int mass = 0;
-    private long x, y;
+    private float x, y;
 
-    public Blob(UUID id, int mass, long x, long y) {
+    public Blob(UUID id, int mass, float x, float y) {
 
         super(id);
         this.mass = mass;
@@ -39,9 +39,19 @@ public abstract class Blob extends Entity implements Drawable {
         return this.mass;
     }
 
-    public void move(long x, long y) {
+    public void move(float x, float y) {
 
         this.x += x;
         this.y += y;
+    }
+
+    public float getX() {
+
+        return x;
+    }
+
+    public float getY() {
+
+        return y;
     }
 }

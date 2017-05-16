@@ -1,9 +1,7 @@
 package in.voidma.classroom.network.client.network;
 
 import in.voidma.classroom.network.client.Client;
-import in.voidma.classroom.network.core.entity.Blob;
-import in.voidma.classroom.network.core.entity.Cell;
-import in.voidma.classroom.network.core.entity.EntityStore;
+import in.voidma.classroom.network.core.entity.*;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import in.voidma.classroom.network.core.network.play.INetHandlerPlayClient;
 import in.voidma.classroom.network.core.network.play.Server.*;
@@ -20,16 +18,14 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
     }
 
     public void processDeregister(SDeregister packet) {
-
         EntityStore.instance().deregister(packet.getUuid());
     }
 
     public void processCell(SCell packet) {
-
         new Cell(
                 packet.getUuid(),
                 packet.getParent(),
-                packet.getSize(),
+                packet.getMass(),
                 packet.getX(),
                 packet.getY()
         );
@@ -37,19 +33,46 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
 
     public void processMove(SMove packet) {
 
-        Blob blob = EntityStore.instance().get(packet.getUuid(), Blob.class);
+        Blob blob = EntityStore.instance().getBlob(packet.getUuid());
         blob.move(packet.getxChange(), packet.getyChange());
     }
 
     public void processMassUpdate(SMassUpdate packet) {
 
+        Blob blob = EntityStore.instance().getBlob(packet.getUuid());
+        blob.addMass(packet.getMassChange());
     }
 
     public void processDeath(SDeath packet) {
 
     }
 
-    public void processPlayerCreate(Packet packet) {
+    public void processEjection(SEjection packet) {
 
+        new Ejection(
+                packet.getUuid(),
+                packet.getMass(),
+                packet.getX(),
+                packet.getY()
+        );
+    }
+
+    public void processFood(SFood packet) {
+
+        new Food(
+                packet.getUuid(),
+                packet.getMass(),
+                packet.getX(),
+                packet.getY()
+        );
+    }
+
+    public void processPlayer(SPlayer packet) {
+
+        new Player(
+                packet.getUuid(),
+                packet.getColor(),
+                packet.getName()
+        );
     }
 }

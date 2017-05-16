@@ -1,6 +1,5 @@
 package in.voidma.classroom.network.core.network.play.Server;
 
-import in.voidma.classroom.network.core.network.Packet;
 import in.voidma.classroom.network.core.network.play.INetHandlerPlayClient;
 import io.netty.buffer.ByteBuf;
 
@@ -12,29 +11,36 @@ import java.util.UUID;
  */
 
 //TODO: miles add stuff in here
-public class SMassUpdate implements Packet<INetHandlerPlayClient> {
+public class SMassUpdate extends SEntity {
 
-    UUID uuid;
     int massChange;
 
     public SMassUpdate(UUID uuid, int massChange) {
-        this.uuid = uuid;
+
+        super(uuid);
         this.massChange = massChange;
     }
 
+    @Override
     public void readPacketData(ByteBuf buf) throws IOException {
-        uuid = new UUID(buf.readLong(), buf.readLong());
-        massChange = buf.readInt();
+
+        super.readPacketData(buf);
+        this.massChange = buf.readInt();
     }
 
+    @Override
     public void writePacketData(ByteBuf buf) throws IOException {
-        buf.writeLong(uuid.getMostSignificantBits());
-        buf.writeLong(uuid.getLeastSignificantBits());
 
+        super.writePacketData(buf);
         buf.writeInt(massChange);
     }
 
     public void processPacket(INetHandlerPlayClient handler) {
         handler.processMassUpdate(this);
+    }
+
+    public int getMassChange() {
+
+        return massChange;
     }
 }

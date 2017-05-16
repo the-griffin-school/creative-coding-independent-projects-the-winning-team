@@ -63,4 +63,9 @@ public class EntityStore {
 
         return get(id, Player.class);
     }
+
+    public Blob getBlob(UUID id) {
+
+        return get(id, Blob.class);
+    }
 }

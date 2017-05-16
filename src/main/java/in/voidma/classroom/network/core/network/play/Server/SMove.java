@@ -14,7 +14,7 @@ import java.util.UUID;
 public class SMove implements Packet<INetHandlerPlayClient> {
 
     private UUID uuid;
-    private int xChange, yChange;
+    private float xChange, yChange;
 
     public SMove(UUID uuid, int xChnage, int yChange) {
         this.uuid = uuid;
@@ -24,16 +24,16 @@ public class SMove implements Packet<INetHandlerPlayClient> {
 
     public void readPacketData(ByteBuf buf) throws IOException {
         uuid = new UUID(buf.readLong(), buf.readLong());
-        xChange = buf.readInt();
-        yChange = buf.readInt();
+        xChange = buf.readFloat();
+        yChange = buf.readFloat();
     }
 
     public void writePacketData(ByteBuf buf) throws IOException {
         buf.writeLong(uuid.getMostSignificantBits());
         buf.writeLong(uuid.getLeastSignificantBits());
 
-        buf.writeInt(xChange);
-        buf.writeInt(yChange);
+        buf.writeFloat(xChange);
+        buf.writeFloat(yChange);
     }
 
     public void processPacket(INetHandlerPlayClient handler) {
@@ -46,12 +46,12 @@ public class SMove implements Packet<INetHandlerPlayClient> {
         return uuid;
     }
 
-    public int getxChange() {
+    public float getxChange() {
 
         return xChange;
     }
 
-    public int getyChange() {
+    public float getyChange() {
 
         return yChange;
     }

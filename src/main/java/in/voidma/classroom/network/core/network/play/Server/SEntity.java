@@ -1,5 +1,6 @@
 package in.voidma.classroom.network.core.network.play.Server;
 
+import in.voidma.classroom.network.core.network.Packet;
 import in.voidma.classroom.network.core.network.play.INetHandlerPlayClient;
 import io.netty.buffer.ByteBuf;
 
@@ -9,36 +10,33 @@ import java.util.UUID;
 /**
  * Created by Miles on 5/16/2017.
  */
-public class SCell extends SBlob {
+public abstract class SEntity implements Packet<INetHandlerPlayClient> {
 
-    UUID parent;
+    protected UUID uuid;
 
-    public SCell(UUID uuid, int mass, float x, float y, UUID parent) {
+    public SEntity(UUID uuid) {
 
-        super(uuid, mass, x, y);
-        this.parent = parent;
+        this.uuid = uuid;
     }
 
-    @Override
     public void readPacketData(ByteBuf buf) throws IOException {
 
-        super.readPacketData(buf);
         this.uuid = new UUID(buf.readLong(), buf.readLong());
     }
 
-    @Override
     public void writePacketData(ByteBuf buf) throws IOException {
 
-        super.writePacketData(buf);
-        writeUUID(buf, parent);
+        writeUUID(buf, this.uuid);
     }
 
-    public void processPacket(INetHandlerPlayClient handler) {
-        handler.processCell(this);
+    protected void writeUUID(ByteBuf buf, UUID id) {
+
+        buf.writeLong(uuid.getMostSignificantBits());
+        buf.writeLong(uuid.getLeastSignificantBits());
     }
 
-    public UUID getParent() {
+    public UUID getUuid() {
 
-        return parent;
+        return uuid;
     }
 }

@@ -1,6 +1,5 @@
 package in.voidma.classroom.network.client.gui;
 
-import fisica.FBlob;
 import in.voidma.classroom.network.client.Client;
 import in.voidma.classroom.network.core.entity.ClientPlayer;
 
@@ -24,18 +23,6 @@ public class PlayScreen extends Screen {
     @Override
     public void update(int seconds) {
         //Step world here
-
-        for (Object body : ourPlayer.getBodies()) {
-            FBlob blob = (FBlob) body;
-            averageMass += blob.getMass();
-            averageX += blob.getX();
-            averageY += blob.getY();
-        }
-
-        int n = ourPlayer.getBodies().size();
-        averageMass = averageMass / n;
-        averageX = averageX / n;
-        averageY = averageY / n;
     }
 
     @Override
