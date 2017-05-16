@@ -12,7 +12,8 @@ public class Player extends Entity {
     ArrayList<Cell> cells;
     String name;
 
-    public Player(int color, String name) {
+    public Player(int color, String name, UUID uuid) {
+        super(uuid);
         this.color = color;
         this.name = name;
 

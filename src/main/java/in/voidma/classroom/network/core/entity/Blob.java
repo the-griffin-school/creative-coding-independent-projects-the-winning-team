@@ -2,6 +2,8 @@ package in.voidma.classroom.network.core.entity;
 
 import processing.core.PApplet;
 
+import java.util.UUID;
+
 /**
  * Created by schan on 5/16/2017.
  */
@@ -9,7 +11,8 @@ public class Blob extends Entity {
     int mass = 0;
     long x, y;
 
-    public Blob(int mass, long x, long y) {
+    public Blob(int mass, long x, long y, UUID uuid) {
+        super(uuid);
         this.mass = mass;
         this.x = x;
         this.y = y;
