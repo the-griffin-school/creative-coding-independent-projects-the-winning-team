@@ -31,6 +31,7 @@ public enum ConnectionState {
             this.registerPacket(PacketDirection.CLIENTBOUND, SCell.class);
             this.registerPacket(PacketDirection.CLIENTBOUND, SEjection.class);
             this.registerPacket(PacketDirection.CLIENTBOUND, SDeath.class);
+            this.registerPacket(PacketDirection.CLIENTBOUND, SPlayerCreate.class);
             this.registerPacket(PacketDirection.SERVERBOUND, CEject.class);
             this.registerPacket(PacketDirection.SERVERBOUND, CVelocity.class);
             this.registerPacket(PacketDirection.SERVERBOUND, CSplit.class);

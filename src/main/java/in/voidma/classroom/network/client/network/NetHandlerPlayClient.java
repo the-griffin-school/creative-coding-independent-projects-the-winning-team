@@ -48,4 +48,8 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
     public void processDeath(SDeath packet) {
 
     }
+
+    public void processPlayerCreate(Packet packet) {
+
+    }
 }

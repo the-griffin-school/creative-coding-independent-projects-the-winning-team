@@ -3,6 +3,9 @@ package in.voidma.classroom.network.client.gui;
 import controlP5.ControlEvent;
 import controlP5.ControlListener;
 import controlP5.ControlP5;
+import controlP5.*;
+import fisica.FWorld;
+import fisica.Fisica;
 import in.voidma.classroom.network.client.Client;
 import processing.event.KeyEvent;
 
@@ -14,10 +17,20 @@ import java.lang.reflect.Method;
 public abstract class Screen implements ControlListener {
 
     protected Client processing;
+    protected FWorld world;
     protected ControlP5 cp5;
+
+    public Screen(Client processing, FWorld world) {
+        this.processing = processing;
+        this.world = world;
+        this.cp5 = new ControlP5(processing);
+        this.cp5.addListener(this);
+    }
 
     public Screen(Client processing) {
         this.processing = processing;
+        Fisica.init(processing);
+        this.world = new FWorld();
         this.cp5 = new ControlP5(processing);
         this.cp5.addListener(this);
     }

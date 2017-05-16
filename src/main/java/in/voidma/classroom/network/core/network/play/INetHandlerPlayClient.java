@@ -1,7 +1,7 @@
 package in.voidma.classroom.network.core.network.play;
 
 import in.voidma.classroom.network.core.network.INetHandler;
-import in.voidma.classroom.network.core.network.play.Server.*;
+import in.voidma.classroom.network.core.network.Packet;
 
 public interface INetHandlerPlayClient extends INetHandler {
 
