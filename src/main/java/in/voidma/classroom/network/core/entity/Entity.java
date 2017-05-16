@@ -6,17 +6,29 @@ import java.util.UUID;
  * Created by schan on 5/16/2017.
  */
 public abstract class Entity {
-    UUID uuid;
 
-    public void update() {};
+    private static EntityStore entityStore;
 
-    public void remove() {};
-
-    public UUID getUUID() {
-        return uuid;
+    static {
+        entityStore = EntityStore.instance();
     }
 
-    public void setUUID(UUID uuid) {
-        this.uuid = uuid;
+    public Entity(UUID uuid) {
+
+        entityStore.register(uuid, this);
+    }
+
+    public void update() {
+
+    }
+
+    public void remove() {
+
+        entityStore.deregister(this);
+    }
+
+    public UUID getUUID() {
+
+        return entityStore.get(this);
     }
 }
