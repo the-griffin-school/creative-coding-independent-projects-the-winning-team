@@ -24,7 +24,7 @@ public class LoginScreen extends Screen {
         cp5.addTextfield("nickname", (processing.width / 2) - 150, processing.height / 2, 300, 50);
 
         processing.rectMode(processing.CENTER);
-        processing.rect(processing.width / 2, processing.height / 2, 600, 400);
+        processing.rect(processing.width / 2, processing.height / 2, 600, 400, 10);
         processing.textAlign(processing.CENTER, processing.BOTTOM);
         processing.textSize(30);
         processing.text("InputOutput.io", processing.width / 2, processing.height / 2);

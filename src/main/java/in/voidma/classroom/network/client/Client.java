@@ -21,7 +21,7 @@ import in.voidma.classroom.network.client.gui.ServerSelectionScreen;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
-
+import controlP5.*;
 
 /**
  * This class is the main entry point for the Professing Client class.
@@ -36,7 +36,7 @@ public class Client extends PApplet {
     private Screen gui;
     private int lastUpdate;
     private NetworkManager networkManager;
-
+    private ControlP5 cp5;
     public static void main(String[] args) {
         PApplet.main(Client.class, args);
     }
@@ -84,4 +84,10 @@ public class Client extends PApplet {
     public void keyPressed(KeyEvent event) {
         gui.keyPressed(event);
     }
+
+    //TODO: Figure out where null pointer exception is coming from
+    public void servers(int n) {
+        System.out.println( cp5.get(controlP5.ScrollableList.class, "servers").getItem(n));
+    }
+
 }
