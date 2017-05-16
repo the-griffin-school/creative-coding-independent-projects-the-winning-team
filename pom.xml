@@ -61,18 +61,8 @@
         </dependency>
         <dependency>
             <groupId>common.local</groupId>
-            <artifactId>fisica</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>common.local</groupId>
             <artifactId>controlp5</artifactId>
             <version>2.2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>common.local</groupId>
-            <artifactId>box2d</artifactId>
-            <version>2.0.1</version>
         </dependency>
     </dependencies>
 
@@ -109,22 +99,6 @@
                 <version>2.5.1</version>
                 <executions>
                     <execution>
-                        <id>install-fisica</id>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                        <phase>validate</phase>
-                        <configuration>
-                            <groupId>common.local</groupId>
-                            <artifactId>fisica</artifactId>
-                            <version>1.0</version>
-                            <packaging>jar</packaging>
-                            <file>${basedir}/dependencies/fisica-1.0.jar</file>
-                            <generatePom>true</generatePom>
-                            <!--<localRepositoryPath>${basedir}/repo</localRepositoryPath>-->
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>install-controllP5</id>
                         <goals>
                             <goal>install-file</goal>
@@ -136,22 +110,6 @@
                             <version>2.2.4</version>
                             <packaging>jar</packaging>
                             <file>${basedir}/dependencies/controlP5.jar</file>
-                            <generatePom>true</generatePom>
-                            <!--<localRepositoryPath>${basedir}/repo</localRepositoryPath>-->
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>install-box2D</id>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                        <phase>validate</phase>
-                        <configuration>
-                            <groupId>common.local</groupId>
-                            <artifactId>box2d</artifactId>
-                            <version>2.0.1</version>
-                            <packaging>jar</packaging>
-                            <file>${basedir}/dependencies/JBox2D-2.0.1.jar</file>
                             <generatePom>true</generatePom>
                             <!--<localRepositoryPath>${basedir}/repo</localRepositoryPath>-->
                         </configuration>

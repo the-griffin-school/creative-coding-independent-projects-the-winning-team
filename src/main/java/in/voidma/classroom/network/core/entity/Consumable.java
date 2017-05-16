@@ -1,12 +1,25 @@
 package in.voidma.classroom.network.core.entity;
 
+import in.voidma.classroom.network.core.util.Color;
+
+import java.util.UUID;
+
 /**
  * Created by schan on 5/16/2017.
  */
 public class Consumable extends Blob {
 
-    public Consumable(int mass, long x, long y) {
-        super(mass, x, y);
+    Color color;
+
+    public Consumable(UUID id, int mass, long x, long y) {
+
+        super(id, mass, x, y);
+        color = Color.randomColor();
     }
 
+    @Override
+    Color getColor() {
+
+        return color;
+    }
 }

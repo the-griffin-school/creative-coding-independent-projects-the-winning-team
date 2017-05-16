@@ -1,14 +1,16 @@
 package in.voidma.classroom.network.core.network.play;
 
 import in.voidma.classroom.network.core.network.INetHandler;
-import in.voidma.classroom.network.core.network.Packet;
+import in.voidma.classroom.network.core.network.play.Client.CEject;
+import in.voidma.classroom.network.core.network.play.Client.CSplit;
+import in.voidma.classroom.network.core.network.play.Client.CVelocity;
 
 public interface INetHandlerPlayServer extends INetHandler {
 
-    void processEject(Packet packet);
+    void processEject(CEject packet);
 
-    void processVelocity(Packet packet);
+    void processVelocity(CVelocity packet);
 
-    void processSplit(Packet packet);
+    void processSplit(CSplit packet);
 
 }

@@ -58,4 +58,9 @@ public class EntityStore {
         Entity entity = entityMap.get(id);
         return type.cast(entity);
     }
+
+    public Player getPlayer(UUID id) {
+
+        return get(id, Player.class);
+    }
 }

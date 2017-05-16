@@ -10,37 +10,49 @@ import java.util.UUID;
 /**
  * Created by schan on 4/26/2017.
  */
-public class SSpawnEntity implements Packet<INetHandlerPlayClient> {
+//TODO: Milea dd stuff in here
+public class SMove implements Packet<INetHandlerPlayClient> {
 
-    UUID uuid;
+    private UUID uuid;
+    private int xChange, yChange;
 
-    int x, y, mass;
-
-    public SSpawnEntity(UUID uuid, int x, int y, int mass) {
+    public SMove(UUID uuid, int xChnage, int yChange) {
         this.uuid = uuid;
-        this.x = x;
-        this.y = y;
-        this.mass = mass;
+        this.xChange = xChnage;
+        this.yChange = yChange;
     }
 
     public void readPacketData(ByteBuf buf) throws IOException {
         uuid = new UUID(buf.readLong(), buf.readLong());
-
-        x = buf.readInt();
-        y = buf.readInt();
-        mass = buf.readInt();
+        xChange = buf.readInt();
+        yChange = buf.readInt();
     }
 
     public void writePacketData(ByteBuf buf) throws IOException {
         buf.writeLong(uuid.getMostSignificantBits());
         buf.writeLong(uuid.getLeastSignificantBits());
 
-        buf.writeInt(x);
-        buf.writeInt(y);
-        buf.writeInt(mass);
+        buf.writeInt(xChange);
+        buf.writeInt(yChange);
     }
 
     public void processPacket(INetHandlerPlayClient handler) {
-        handler.processSpawnEntity(this);
+
+        handler.processMove(this);
+    }
+
+    public UUID getUuid() {
+
+        return uuid;
+    }
+
+    public int getxChange() {
+
+        return xChange;
+    }
+
+    public int getyChange() {
+
+        return yChange;
     }
 }

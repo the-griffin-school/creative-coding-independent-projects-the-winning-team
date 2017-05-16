@@ -1,17 +1,17 @@
 package in.voidma.classroom.network.core.network.play;
 
 import in.voidma.classroom.network.core.network.INetHandler;
-import in.voidma.classroom.network.core.network.Packet;
+import in.voidma.classroom.network.core.network.play.Server.*;
 
 public interface INetHandlerPlayClient extends INetHandler {
 
-    void processMassUpdate(Packet packet);
+    void processCell(SCell packet);
 
-    void processEntityMove(Packet packet);
+    void processMassUpdate(SMassUpdate packet);
 
-    void processDestroyEntity(Packet packet);
+    void processMove(SMove packet);
 
-    void processSpawnEntity(Packet packet);
+    void processDeregister(SDeregister packet);
 
-    void processDeath(Packet packet);
+    void processDeath(SDeath packet);
 }

@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public abstract class Entity {
 
-    private static EntityStore entityStore;
+    protected static EntityStore entityStore;
 
     static {
         entityStore = EntityStore.instance();

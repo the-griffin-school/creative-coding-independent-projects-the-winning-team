@@ -3,7 +3,6 @@ package in.voidma.classroom.network.client.gui;
 import controlP5.ControlEvent;
 import controlP5.ControlListener;
 import controlP5.ControlP5;
-import controlP5.*;
 import fisica.FWorld;
 import fisica.Fisica;
 import in.voidma.classroom.network.client.Client;
@@ -48,6 +47,7 @@ public abstract class Screen implements ControlListener {
         String name = controlEvent.getName();
 
         invokeNamedCallback(name);
+        invokeNamedCallback(name, (int) controlEvent.getValue());
         invokeNamedCallback(name, controlEvent.getValue());
         invokeNamedCallback(name, controlEvent.getArrayValue());
         invokeNamedCallback(name, controlEvent.getStringValue());
@@ -57,7 +57,9 @@ public abstract class Screen implements ControlListener {
         try {
             Method m = this.getClass().getMethod(name, parameter.getClass());
             m.invoke(this, parameter);
+            System.out.println("Callback " + name + " successfully invoked in screen " + getClass().getSimpleName());
         } catch (Exception e) {
+            // Failure is enviable.
         }
     }
 
@@ -65,7 +67,9 @@ public abstract class Screen implements ControlListener {
         try {
             Method m = this.getClass().getMethod(name);
             m.invoke(this);
+            System.out.println("Callback " + name + " successfully invoked in screen " + getClass().getSimpleName());
         } catch (Exception e) {
+            // Failure is enviable.
         }
     }
 }

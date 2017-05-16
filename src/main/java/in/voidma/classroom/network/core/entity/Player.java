@@ -1,30 +1,40 @@
 package in.voidma.classroom.network.core.entity;
 
+import in.voidma.classroom.network.core.util.Color;
+import processing.core.PApplet;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
 /**
  * Created by schan on 5/16/2017.
  */
-public class Player extends Entity {
+public class Player extends Entity implements Drawable {
 
-    int color;
-    ArrayList<Cell> cells;
-    String name;
+    private Color color;
+    private ArrayList<UUID> cells;
+    private String name;
 
-    public Player(int color, String name) {
-        this.color = color;
+    public Player(UUID id, int color, String name) {
+
+        super(id);
+        this.color = Color.fromProsessingColor(color);
         this.name = name;
 
-        cells = new ArrayList<Cell>();
+        cells = new ArrayList<UUID>();
     }
 
-    public int getColor() {
+    public void draw(PApplet processing) {
+        // TODO, DRAW PLAYER NAME
+    }
+
+    public Color getColor() {
         return color;
     }
 
     public void setColor(int color) {
-        this.color = color;
+
+        this.color = Color.fromProsessingColor(color);
     }
 
     public String getName() {
@@ -35,11 +45,13 @@ public class Player extends Entity {
         this.name = name;
     }
 
-    public void addCell(Cell cell) {
-        cells.add(cell);
+    public void registerCell(Cell cell) {
+
+        cells.add(entityStore.get(cell));
     }
 
-    public void removeCell(Cell cell) {
-        cells.remove(cell);
+    public void deregisterCell(Cell cell) {
+
+        cells.remove(entityStore.get(cell));
     }
 }

@@ -10,11 +10,11 @@ import java.util.UUID;
 /**
  * Created by schan on 4/26/2017.
  */
-public class SDestroyEntity implements Packet<INetHandlerPlayClient> {
+public class SDeregister implements Packet<INetHandlerPlayClient> {
 
-    UUID uuid;
+    private UUID uuid;
 
-    public SDestroyEntity(UUID uuid) {
+    public SDeregister(UUID uuid) {
         this.uuid = uuid;
     }
 
@@ -28,6 +28,12 @@ public class SDestroyEntity implements Packet<INetHandlerPlayClient> {
     }
 
     public void processPacket(INetHandlerPlayClient handler) {
-        handler.processDestroyEntity(this);
+
+        handler.processDeregister(this);
+    }
+
+    public UUID getUuid() {
+
+        return uuid;
     }
 }
