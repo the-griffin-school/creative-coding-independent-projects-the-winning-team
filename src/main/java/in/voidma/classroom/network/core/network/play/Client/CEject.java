@@ -12,6 +12,10 @@ import java.util.UUID;
  */
 public class CEject implements Packet<INetHandlerPlayServer>{
 
+    //this packet is used to allow mass ejection from a object with
+    //specific uuid.
+    //takes uuid, x, y, and the change in mass.
+
     UUID uuid;
     int x, y, massChange;
 
