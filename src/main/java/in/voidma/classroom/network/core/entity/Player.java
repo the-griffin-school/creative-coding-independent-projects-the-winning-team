@@ -1,8 +1,5 @@
 package in.voidma.classroom.network.core.entity;
 
-import in.voidma.classroom.network.core.util.Color;
-import processing.core.PApplet;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
