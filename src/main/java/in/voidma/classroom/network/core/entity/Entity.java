@@ -9,4 +9,14 @@ public abstract class Entity {
     UUID uuid;
 
     public void update() {};
+
+    public void remove() {};
+
+    public UUID getUUID() {
+        return uuid;
+    }
+
+    public void setUUID(UUID uuid) {
+        this.uuid = uuid;
+    }
 }
