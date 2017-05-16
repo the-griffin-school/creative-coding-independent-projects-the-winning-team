@@ -47,8 +47,11 @@ public abstract class Screen implements ControlListener {
     public void controlEvent(ControlEvent controlEvent) {
         String name = controlEvent.getName();
 
+        System.out.println("Control Event Called!" + name + ":" + controlEvent.getLabel() + ":" + controlEvent.getId());
+
         invokeNamedCallback(name);
         invokeNamedCallback(name, controlEvent.getValue());
+        invokeNamedCallback(name, controlEvent.getId());
         invokeNamedCallback(name, controlEvent.getArrayValue());
         invokeNamedCallback(name, controlEvent.getStringValue());
     }
@@ -58,6 +61,7 @@ public abstract class Screen implements ControlListener {
             Method m = this.getClass().getMethod(name, parameter.getClass());
             m.invoke(this, parameter);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -66,6 +70,7 @@ public abstract class Screen implements ControlListener {
             Method m = this.getClass().getMethod(name);
             m.invoke(this);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

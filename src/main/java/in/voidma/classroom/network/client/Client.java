@@ -86,8 +86,15 @@ public class Client extends PApplet {
     }
 
     //TODO: Figure out where null pointer exception is coming from
-    public void servers(int n) {
+   /* public void servers(int n) {
         System.out.println( cp5.get(controlP5.ScrollableList.class, "servers").getItem(n));
-    }
+    }*/
+
+//    public void controlEvent(ControlEvent theEvent){
+//        for(int i = 0; i < theEvent.group().getArrayValue().length; i++){
+//            System.out.print(theEvent.group().getArrayValue()[i]);
+//        }
+//        System.out.println("/t" +theEvent.group().getArrayValue());
+//    }
 
 }

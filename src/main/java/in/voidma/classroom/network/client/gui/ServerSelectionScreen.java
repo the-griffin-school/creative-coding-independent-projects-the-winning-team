@@ -53,9 +53,10 @@ public class ServerSelectionScreen extends Screen {
 
 }
 
-//    public void Servers(int n) {
-//        System.out.println( cp5.get(controlP5.ScrollableList.class, "Servers").getItem(n));
-//    }
+    public void servers(int n) {
+        System.out.println("hello");
+        System.out.println( cp5.get(controlP5.ScrollableList.class, "Servers").getItem(n));
+    }
 
     public void update(int seconds) {
 
@@ -139,5 +140,8 @@ public class ServerSelectionScreen extends Screen {
         public ServerSelectionScreen.serverLocation getServerLocation() {
             return serverLocation;
         }
+
+
+
     }
 }
