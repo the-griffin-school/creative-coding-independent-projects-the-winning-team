@@ -10,6 +10,14 @@ import java.io.IOException;
  * Created by schan on 4/25/2017.
  */
 public class SLoginSuccess implements Packet<INetHandlerLoginClient> {
+
+    //sent to Client when server approves the login
+
+    public SLoginSuccess() {
+
+    }
+
+
     public void readPacketData(ByteBuf buf) throws IOException {
 
     }
@@ -19,6 +27,6 @@ public class SLoginSuccess implements Packet<INetHandlerLoginClient> {
     }
 
     public void processPacket(INetHandlerLoginClient handler) {
-
+        handler.processLoginSuccess(this);
     }
 }

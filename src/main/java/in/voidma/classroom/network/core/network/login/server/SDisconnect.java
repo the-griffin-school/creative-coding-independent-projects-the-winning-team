@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class SDisconnect implements Packet<INetHandlerLoginClient> {
 
+    //This packet disconnects the cline tfrom server, usually
+    //after a server timeout.
+
     boolean connectionError;
     boolean internalError;
 

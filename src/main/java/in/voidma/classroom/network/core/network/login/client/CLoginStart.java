@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class CLoginStart implements Packet<INetHandlerLoginServer> {
 
+    //This packet allows the user to set color and name and will begin after
+    //server selection
+
     private int color;
     private String name;
 
