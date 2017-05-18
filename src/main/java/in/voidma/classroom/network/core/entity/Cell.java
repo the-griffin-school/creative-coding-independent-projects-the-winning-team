@@ -1,6 +1,7 @@
 package in.voidma.classroom.network.core.entity;
 
 import in.voidma.classroom.network.core.util.Color;
+import processing.core.PApplet;
 
 import java.util.UUID;
 
@@ -41,5 +42,12 @@ public class Cell extends Blob {
 
         getPlayer().deregisterCell(this);
         super.remove();
+    }
+
+    @Override
+    public void draw(PApplet processing) {
+        super.draw(processing);
+
+        processing.text(this.getPlayer().getName(), this.getX(), this.getY());
     }
 }
