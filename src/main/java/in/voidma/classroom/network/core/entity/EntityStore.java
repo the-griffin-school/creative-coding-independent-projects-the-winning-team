@@ -2,6 +2,7 @@ package in.voidma.classroom.network.core.entity;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import processing.core.PApplet;
 
 import java.util.UUID;
 
@@ -67,5 +68,15 @@ public class EntityStore {
     public Blob getBlob(UUID id) {
 
         return get(id, Blob.class);
+    }
+
+    public void drawAll(PApplet p) {
+
+        entityMap
+                .values()
+                .stream()
+                .filter(e -> e instanceof Drawable)
+                .map(e -> (Drawable) e)
+                .forEach(d -> d.draw(p));
     }
 }

@@ -1,6 +1,7 @@
 package in.voidma.classroom.network.client.network;
 
 import in.voidma.classroom.network.client.Client;
+import in.voidma.classroom.network.client.gui.DeathScreen;
 import in.voidma.classroom.network.core.entity.*;
 import in.voidma.classroom.network.core.network.NetworkManager;
 import in.voidma.classroom.network.core.network.play.INetHandlerPlayClient;
@@ -45,6 +46,7 @@ public class NetHandlerPlayClient extends NetHandlerClient implements INetHandle
 
     public void processDeath(SDeath packet) {
 
+        client.setGui(new DeathScreen(client));
     }
 
     public void processEjection(SEjection packet) {

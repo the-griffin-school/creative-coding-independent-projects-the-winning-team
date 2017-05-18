@@ -77,4 +77,13 @@ public class Player extends Entity implements Drawable {
 
         return new Location(averageX, averageY);
     }
+
+    public int totalMass() {
+
+        return cells
+                .stream()
+                .map(c -> entityStore.getBlob(c))
+                .mapToInt(Blob::getMass)
+                .sum();
+    }
 }
